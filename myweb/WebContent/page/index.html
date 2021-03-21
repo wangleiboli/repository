@@ -16,7 +16,7 @@
 			<div>
 				<input type="text" id="pathname">
 			</div>
-			<input type="button" id="read" value="导入">
+			<input type="button" id="read" value="读取">
 		</div>
 		<div class="show">
 			<div class="title">
@@ -55,8 +55,8 @@
 					class="num" maxlength="5" placeholder="0"> <label
 					class="iWujiangji">武将技:</label> <input type="text" class="num"
 					maxlength="3" placeholder="0"> <label class="iLev">等级:</label>
-				<select><option value="<=" selected="selected">&lt;=</option>
-					<option value=">=">&gt;</option></select> <input type="text" class="num"
+				<select><option value="false" selected="selected">&lt;=</option>
+					<option value="true">&gt;</option></select> <input type="text" class="num"
 					maxlength="3" placeholder="0"><label>保留</label>
 			</div>
 		</div>
@@ -120,8 +120,8 @@
 				</div>
 				<div class="iLev">
 					<select>
-						<option value="<=" {{if !bLev_gt}}selected="selected"{{/if}}>&lt;=</option>
-						<option value=">=" {{if bLev_gt}}selected="selected"{{/if}}>&gt;=</option>
+						<option value="false" {{if !bLev_gt}}selected="selected"{{/if}}>&lt;=</option>
+						<option value="true" {{if bLev_gt}}selected="selected"{{/if}}>&gt;=</option>
 					</select> <input type="text" class="num" maxlength="3" placeholder="0" value="{{:iLev}}">
 				</div>
 			</div>
