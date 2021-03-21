@@ -3,33 +3,57 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	
+
 	<display-name>myweb</display-name>
+
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file>page/index.html</welcome-file>
 	</welcome-file-list>
 
+	<!-- SpringMVC默认会去WEB-INF下找叫做<servlet-name>-servlet.xml的配置文件 -->
 	<servlet>
-		<!--名称 -->
 		<servlet-name>springmvc</servlet-name>
-		<!-- Servlet类 -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
-			<!--SpringMVC配置参数文件的位置 -->
+			<!-- SpringMVC配置参数文件的位置 -->
 			<param-name>contextConfigLocation</param-name>
-			<!--默认名称为ServletName-servlet.xml -->
+			<!-- 让SpringMVC去类路径下找配置文件，而不是WEB-INF -->
 			<param-value>classpath:springmvc-servlet.xml</param-value>
 		</init-param>
 		<!-- 启动顺序，数字越小，启动越早 -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
-	<!--所有请求都会被springmvc拦截 -->
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
-		<url-pattern>/</url-pattern>
+		<!-- 配置为/，处理所有的请求 -->
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	
-	
-	
+
+	<!-- Spring启动监听 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+
+	<!-- UTF-8编码过滤 -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 </web-app>

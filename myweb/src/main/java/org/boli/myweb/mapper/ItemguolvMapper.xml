@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.boli.myweb.mapper.ItemguolvMapper">
+  <resultMap id="BaseResultMap" type="org.boli.myweb.entity.Itemguolv">
+    <result column="ObjName" jdbcType="VARCHAR" property="objname" />
+    <result column="bSell" jdbcType="BIT" property="bsell" />
+    <result column="bStore" jdbcType="BIT" property="bstore" />
+    <result column="bDrop" jdbcType="BIT" property="bdrop" />
+    <result column="iQiangHuaCishu" jdbcType="INTEGER" property="iqianghuacishu" />
+    <result column="iMaSu" jdbcType="INTEGER" property="imasu" />
+    <result column="iFangyu" jdbcType="INTEGER" property="ifangyu" />
+    <result column="iGongji" jdbcType="INTEGER" property="igongji" />
+    <result column="iShenshangliuliang" jdbcType="INTEGER" property="ishenshangliuliang" />
+    <result column="iWujiangji" jdbcType="INTEGER" property="iwujiangji" />
+    <result column="iLev" jdbcType="INTEGER" property="ilev" />
+    <result column="bLev_gt" jdbcType="BIT" property="blevGt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ObjName, bSell, bStore, bDrop, iQiangHuaCishu, iMaSu, iFangyu, iGongji, iShenshangliuliang, 
+    iWujiangji, iLev, bLev_gt
+  </sql>
+  <select id="selectByExample" parameterType="org.boli.myweb.entity.ItemguolvExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from itemguolv
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="org.boli.myweb.entity.ItemguolvExample">
+    delete from itemguolv
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.boli.myweb.entity.Itemguolv">
+    insert into itemguolv (ObjName, bSell, bStore, 
+      bDrop, iQiangHuaCishu, iMaSu, 
+      iFangyu, iGongji, iShenshangliuliang, 
+      iWujiangji, iLev, bLev_gt
+      )
+    values (#{objname,jdbcType=VARCHAR}, #{bsell,jdbcType=BIT}, #{bstore,jdbcType=BIT}, 
+      #{bdrop,jdbcType=BIT}, #{iqianghuacishu,jdbcType=INTEGER}, #{imasu,jdbcType=INTEGER}, 
+      #{ifangyu,jdbcType=INTEGER}, #{igongji,jdbcType=INTEGER}, #{ishenshangliuliang,jdbcType=INTEGER}, 
+      #{iwujiangji,jdbcType=INTEGER}, #{ilev,jdbcType=INTEGER}, #{blevGt,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.boli.myweb.entity.Itemguolv">
+    insert into itemguolv
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="objname != null">
+        ObjName,
+      </if>
+      <if test="bsell != null">
+        bSell,
+      </if>
+      <if test="bstore != null">
+        bStore,
+      </if>
+      <if test="bdrop != null">
+        bDrop,
+      </if>
+      <if test="iqianghuacishu != null">
+        iQiangHuaCishu,
+      </if>
+      <if test="imasu != null">
+        iMaSu,
+      </if>
+      <if test="ifangyu != null">
+        iFangyu,
+      </if>
+      <if test="igongji != null">
+        iGongji,
+      </if>
+      <if test="ishenshangliuliang != null">
+        iShenshangliuliang,
+      </if>
+      <if test="iwujiangji != null">
+        iWujiangji,
+      </if>
+      <if test="ilev != null">
+        iLev,
+      </if>
+      <if test="blevGt != null">
+        bLev_gt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="objname != null">
+        #{objname,jdbcType=VARCHAR},
+      </if>
+      <if test="bsell != null">
+        #{bsell,jdbcType=BIT},
+      </if>
+      <if test="bstore != null">
+        #{bstore,jdbcType=BIT},
+      </if>
+      <if test="bdrop != null">
+        #{bdrop,jdbcType=BIT},
+      </if>
+      <if test="iqianghuacishu != null">
+        #{iqianghuacishu,jdbcType=INTEGER},
+      </if>
+      <if test="imasu != null">
+        #{imasu,jdbcType=INTEGER},
+      </if>
+      <if test="ifangyu != null">
+        #{ifangyu,jdbcType=INTEGER},
+      </if>
+      <if test="igongji != null">
+        #{igongji,jdbcType=INTEGER},
+      </if>
+      <if test="ishenshangliuliang != null">
+        #{ishenshangliuliang,jdbcType=INTEGER},
+      </if>
+      <if test="iwujiangji != null">
+        #{iwujiangji,jdbcType=INTEGER},
+      </if>
+      <if test="ilev != null">
+        #{ilev,jdbcType=INTEGER},
+      </if>
+      <if test="blevGt != null">
+        #{blevGt,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.boli.myweb.entity.ItemguolvExample" resultType="java.lang.Long">
+    select count(*) from itemguolv
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update itemguolv
+    <set>
+      <if test="record.objname != null">
+        ObjName = #{record.objname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bsell != null">
+        bSell = #{record.bsell,jdbcType=BIT},
+      </if>
+      <if test="record.bstore != null">
+        bStore = #{record.bstore,jdbcType=BIT},
+      </if>
+      <if test="record.bdrop != null">
+        bDrop = #{record.bdrop,jdbcType=BIT},
+      </if>
+      <if test="record.iqianghuacishu != null">
+        iQiangHuaCishu = #{record.iqianghuacishu,jdbcType=INTEGER},
+      </if>
+      <if test="record.imasu != null">
+        iMaSu = #{record.imasu,jdbcType=INTEGER},
+      </if>
+      <if test="record.ifangyu != null">
+        iFangyu = #{record.ifangyu,jdbcType=INTEGER},
+      </if>
+      <if test="record.igongji != null">
+        iGongji = #{record.igongji,jdbcType=INTEGER},
+      </if>
+      <if test="record.ishenshangliuliang != null">
+        iShenshangliuliang = #{record.ishenshangliuliang,jdbcType=INTEGER},
+      </if>
+      <if test="record.iwujiangji != null">
+        iWujiangji = #{record.iwujiangji,jdbcType=INTEGER},
+      </if>
+      <if test="record.ilev != null">
+        iLev = #{record.ilev,jdbcType=INTEGER},
+      </if>
+      <if test="record.blevGt != null">
+        bLev_gt = #{record.blevGt,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update itemguolv
+    set ObjName = #{record.objname,jdbcType=VARCHAR},
+      bSell = #{record.bsell,jdbcType=BIT},
+      bStore = #{record.bstore,jdbcType=BIT},
+      bDrop = #{record.bdrop,jdbcType=BIT},
+      iQiangHuaCishu = #{record.iqianghuacishu,jdbcType=INTEGER},
+      iMaSu = #{record.imasu,jdbcType=INTEGER},
+      iFangyu = #{record.ifangyu,jdbcType=INTEGER},
+      iGongji = #{record.igongji,jdbcType=INTEGER},
+      iShenshangliuliang = #{record.ishenshangliuliang,jdbcType=INTEGER},
+      iWujiangji = #{record.iwujiangji,jdbcType=INTEGER},
+      iLev = #{record.ilev,jdbcType=INTEGER},
+      bLev_gt = #{record.blevGt,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

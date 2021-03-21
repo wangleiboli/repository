@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="page/css/index.css" />
+<script type="text/javascript" src="page/js/jquery/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="page/js/index.js"></script>
+</head>
+<body>
+	<div class="left">
+		<div class="import">
+			<label>配置文件目录:</label>
+			<div>
+				<input type="text" id="path">
+			</div>
+			<input type="button" id="import" value="导入">
+		</div>
+		<div class="show">
+			<div class="title">
+				<div>账号</div>
+				<div>角色</div>
+				<div>配置文件</div>
+				<div>操作</div>
+			</div>
+			<div class="roles">
+				<div class="role">
+					<div>boli11</div>
+					<div>bl11</div>
+					<div>config.xml</div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+		<div class="export">
+			<input type="button" id="export" value="导出">
+		</div>
+		<div class="setup">
+			<div class="line">
+				<label class="ObjName">物品名称:</label> <input type="text" id="ObjName"
+					maxlength="20"> <input type="checkbox" id="bSell">
+				<label class="bSell" for="bSell">卖</label> <input type="checkbox"
+					id="bStore"> <label class="bStore" for="bStore">存</label> <input
+					type="checkbox" id="bDrop"> <label class="bDrop"
+					for="bDrop">丢</label> <input type="button" id="add" value="添加">
+				<input type="button" id="query" value="查找"> <input
+					type="button" id="delete" value="删除">
+			</div>
+			<div class="line">
+				<label class="iQiangHuaCishu">强化次数:</label> <input type="text"
+					class="num" maxlength="1" placeholder="0"> <label
+					class="iMaSu">马速:</label> <input type="text" class="num"
+					maxlength="3" placeholder="0"> <label class="iFangyu">防御:</label>
+				<input type="text" class="num" maxlength="3" placeholder="0">
+				<label class="iGongji">攻击:</label> <input type="text" class="num"
+					maxlength="3" placeholder="0"><input type="button"
+					id="reset" value="清空">
+			</div>
+			<div class="line">
+				<label class="iShenshangliuliang">身上留量:</label> <input type="text"
+					class="num" maxlength="5" placeholder="0"> <label
+					class="iWujiangji">武将技:</label> <input type="text" class="num"
+					maxlength="3" placeholder="0"> <label class="iLev">等级:</label>
+				<select><option value="<=" selected="selected">&lt;=</option>
+					<option value=">=">&gt;</option></select> <input type="text" class="num"
+					maxlength="3" placeholder="0"><label>保留</label>
+			</div>
+		</div>
+	</div>
+	<div class="center"></div>
+	<div class="right">
+		<div class="title">
+			<div class="ObjName">物品名称</div>
+			<div class="bSell">卖</div>
+			<div class="bStore">存</div>
+			<div class="bDrop">丢</div>
+			<div class="iShenshangliuliang">身上留量</div>
+			<div class="iQiangHuaCishu">强化</div>
+			<div class="iGongji">攻击</div>
+			<div class="iFangyu">防御</div>
+			<div class="iWujiangji">武将技</div>
+			<div class="iMaSu">马速</div>
+			<div class="iLev">等级</div>
+		</div>
+		<div class="items">
+			<div class="item">
+				<div class="ObjName">棍子</div>
+				<div class="bSell">
+					<input type="checkbox">
+				</div>
+				<div class="bStore">
+					<input type="checkbox">
+				</div>
+				<div class="bDrop">
+					<input type="checkbox">
+				</div>
+				<div class="iShenshangliuliang">
+					<input type="text" class="num" maxlength="5" placeholder="0">
+				</div>
+				<div class="iQiangHuaCishu">
+					<input type="text" class="num" maxlength="1" placeholder="0">
+				</div>
+				<div class="iGongji">
+					<input type="text" class="num" maxlength="3" placeholder="0">
+				</div>
+				<div class="iFangyu">
+					<input type="text" class="num" maxlength="3" placeholder="0">
+				</div>
+				<div class="iWujiangji">
+					<input type="text" class="num" maxlength="3" placeholder="0">
+				</div>
+				<div class="iMaSu">
+					<input type="text" class="num" maxlength="3" placeholder="0">
+				</div>
+				<div class="iLev">
+					<select>
+						<option value="<=" selected="selected">&lt;=</option>
+						<option value=">=">&gt;=</option>
+					</select> <input type="text" class="num" maxlength="3" placeholder="0">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

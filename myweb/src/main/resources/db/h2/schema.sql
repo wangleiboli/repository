@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL identity,
   `name` varchar(20) DEFAULT NULL,
   `address` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 DROP TABLE IF EXISTS `itemguolv`;
 CREATE TABLE `itemguolv` (
@@ -20,4 +20,4 @@ CREATE TABLE `itemguolv` (
   `iWujiangji` int DEFAULT NULL,
   `iLev` int DEFAULT NULL,
   `bLev_gt` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="WARN" monitorInterval="60"
+	xmlns="http://logging.apache.org/log4j/2.0/events">
+
+	<properties>
+		<property name="LOG_HOME">log</property>
+	</properties>
+
+	<Appenders>
+
+		<Console name="console_appender" target="SYSTEM_OUT">
+			<ThresholdFilter level="DEBUG" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<PatternLayout
+				pattern="%5p %t %d{yyyy-MM-dd HH:mm:ss.SSS} %m%n" />
+		</Console>
+
+		<RollingFile name="info_appender" immediateFlush="true"
+			fileName="${LOG_HOME}/info.log"
+			filePattern="${LOG_HOME}/info_%d{yyyy-MM-dd}_%i.log.gz">
+			<PatternLayout
+				pattern="%5p %d{yyyy-MM-dd HH:mm:ss.SSS} %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<Filters>
+				<ThresholdFilter level="INFO" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<DefaultRolloverStrategy max="30" />
+		</RollingFile>
+
+		<RollingFile name="error_appender" immediateFlush="true"
+			fileName="${LOG_HOME}/error.log"
+			filePattern="${LOG_HOME}/error_%d{yyyy-MM-dd}_%i.log.gz">
+			<PatternLayout
+				pattern="%5p %d{yyyy-MM-dd HH:mm:ss.SSS} %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<Filters>
+				<ThresholdFilter level="ERROR" onMatch="ACCEPT"
+					onMismatch="DENY" />
+			</Filters>
+			<DefaultRolloverStrategy max="30" />
+		</RollingFile>
+
+	</Appenders>
+
+	<Loggers>
+
+		<root level="debug">
+			<appender-ref ref="console_appender" />
+			<appender-ref ref="info_appender" />
+			<appender-ref ref="error_appender" />
+		</root>
+
+		<logger name="org.boli.myweb" level="info" />
+
+	</Loggers>
+
+</Configuration>

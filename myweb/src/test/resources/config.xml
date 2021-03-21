@@ -2,7 +2,7 @@
     "ItemGuolv":
     [
         {
-            "ObjName":"新手一品五色棍",
+            "ObjName":"短棍",
             "bSell":true,
             "bStore":false,
             "bDrop":false,
@@ -16,7 +16,7 @@
             "bLev_gt":false
         },
         {
-            "ObjName":"水镜护法靴",
+            "ObjName":"布衣",
             "bSell":true,
             "bStore":false,
             "bDrop":false,
@@ -30,7 +30,7 @@
             "bLev_gt":false
         },
         {
-            "ObjName":"水镜之冠",
+            "ObjName":"羽毛",
             "bSell":true,
             "bStore":false,
             "bDrop":false,
@@ -44,7 +44,7 @@
             "bLev_gt":false
         },
         {
-            "ObjName":"水镜之袍",
+            "ObjName":"特效神速丹",
             "bSell":true,
             "bStore":false,
             "bDrop":false,
@@ -58,7 +58,7 @@
             "bLev_gt":false
         },
         {
-            "ObjName":"麻布披风",
+            "ObjName":"鹰爪",
             "bSell":true,
             "bStore":false,
             "bDrop":false,
@@ -72,7 +72,7 @@
             "bLev_gt":false
         },
         {
-            "ObjName":"皮护腕",
+            "ObjName":"翎羽",
             "bSell":true,
             "bStore":false,
             "bDrop":false,
@@ -86,63 +86,7 @@
             "bLev_gt":false
         },
         {
-            "ObjName":"短衣",
-            "bSell":true,
-            "bStore":false,
-            "bDrop":false,
-            "iQiangHuaCishu":0,
-            "iMaSu":0,
-            "iFangyu":0,
-            "iGongji":0,
-            "iShenshangliuliang":0,
-            "iWujiangji":0,
-            "iLev":0,
-            "bLev_gt":false
-        },
-        {
-            "ObjName":"手盾",
-            "bSell":true,
-            "bStore":false,
-            "bDrop":false,
-            "iQiangHuaCishu":0,
-            "iMaSu":0,
-            "iFangyu":0,
-            "iGongji":0,
-            "iShenshangliuliang":0,
-            "iWujiangji":0,
-            "iLev":0,
-            "bLev_gt":false
-        },
-        {
-            "ObjName":"白龙驹",
-            "bSell":true,
-            "bStore":false,
-            "bDrop":false,
-            "iQiangHuaCishu":0,
-            "iMaSu":0,
-            "iFangyu":0,
-            "iGongji":0,
-            "iShenshangliuliang":0,
-            "iWujiangji":0,
-            "iLev":0,
-            "bLev_gt":false
-        },
-        {
-            "ObjName":"奖励结界符",
-            "bSell":false,
-            "bStore":false,
-            "bDrop":true,
-            "iQiangHuaCishu":0,
-            "iMaSu":0,
-            "iFangyu":0,
-            "iGongji":0,
-            "iShenshangliuliang":0,
-            "iWujiangji":0,
-            "iLev":0,
-            "bLev_gt":false
-        },
-        {
-            "ObjName":"奖励神速丹",
+            "ObjName":"心眼符",
             "bSell":false,
             "bStore":false,
             "bDrop":true,
@@ -159,7 +103,7 @@
     "ProtectSkills":
     [
         {
-            "ObjName":"结界法",
+            "ObjName":"神行法",
             "bJiliLDayu":false,
             "iJiliDayu":0,
             "bJiliXiaoyu":false,
@@ -178,7 +122,26 @@
             "bBushawangshishiyong":false
         },
         {
-            "ObjName":"军魂",
+            "ObjName":"刚体法",
+            "bJiliLDayu":false,
+            "iJiliDayu":0,
+            "bJiliXiaoyu":false,
+            "iJiliXiaoyu":0,
+            "bNuqiDayu":false,
+            "iNuqiDayu":0,
+            "bNuqiXiaoyu":false,
+            "iNuqiXiaoyu":0,
+            "bShiyongqianshunyi":false,
+            "bYouxianshiyongwupin":false,
+            "bUseforself":true,
+            "bZaiChengNeiShiYong":true,
+            "bBuGongJiShiYong":false,
+            "bZidongdaguaishiyong":false,
+            "bShawangshishiyong":false,
+            "bBushawangshishiyong":false
+        },
+        {
+            "ObjName":"心眼法",
             "bJiliLDayu":false,
             "iJiliDayu":0,
             "bJiliXiaoyu":false,
@@ -208,26 +171,7 @@
             "iNuqiXiaoyu":0,
             "bShiyongqianshunyi":false,
             "bYouxianshiyongwupin":false,
-            "bUseforself":false,
-            "bZaiChengNeiShiYong":true,
-            "bBuGongJiShiYong":false,
-            "bZidongdaguaishiyong":false,
-            "bShawangshishiyong":false,
-            "bBushawangshishiyong":false
-        },
-        {
-            "ObjName":"军魂",
-            "bJiliLDayu":false,
-            "iJiliDayu":0,
-            "bJiliXiaoyu":false,
-            "iJiliXiaoyu":0,
-            "bNuqiDayu":false,
-            "iNuqiDayu":0,
-            "bNuqiXiaoyu":false,
-            "iNuqiXiaoyu":0,
-            "bShiyongqianshunyi":false,
-            "bYouxianshiyongwupin":false,
-            "bUseforself":false,
+            "bUseforself":true,
             "bZaiChengNeiShiYong":true,
             "bBuGongJiShiYong":false,
             "bZidongdaguaishiyong":false,
@@ -252,42 +196,31 @@
             "bZidongdaguaishiyong":false,
             "bShawangshishiyong":false,
             "bBushawangshishiyong":false
+        },
+        {
+            "ObjName":"军魂",
+            "bJiliLDayu":false,
+            "iJiliDayu":0,
+            "bJiliXiaoyu":false,
+            "iJiliXiaoyu":0,
+            "bNuqiDayu":false,
+            "iNuqiDayu":0,
+            "bNuqiXiaoyu":false,
+            "iNuqiXiaoyu":0,
+            "bShiyongqianshunyi":false,
+            "bYouxianshiyongwupin":false,
+            "bUseforself":false,
+            "bZaiChengNeiShiYong":true,
+            "bBuGongJiShiYong":false,
+            "bZidongdaguaishiyong":false,
+            "bShawangshishiyong":false,
+            "bBushawangshishiyong":false
         }
     ],
     "GongfangSkills":
     [
         {
-            "ObjName":"命疗结界",
-            "iSkillLev":0,
-            "iGuaiwushuliang":5,
-            "iGongjicishu":0,
-            "vZhidingguai":
-            [],
-            "bJinyongyushenbianguai":false,
-            "bNuqixiaoyutingzhi":false,
-            "iNuqixiaoyutingzhi":0,
-            "bGuaiwuhpdayu":true,
-            "iGuaiwuhpdayu":0,
-            "iJilidayu":0,
-            "iNuqidayu":0
-        },
-        {
             "ObjName":"破咒结界",
-            "iSkillLev":0,
-            "iGuaiwushuliang":5,
-            "iGongjicishu":0,
-            "vZhidingguai":
-            [],
-            "bJinyongyushenbianguai":false,
-            "bNuqixiaoyutingzhi":false,
-            "iNuqixiaoyutingzhi":0,
-            "bGuaiwuhpdayu":true,
-            "iGuaiwuhpdayu":0,
-            "iJilidayu":0,
-            "iNuqidayu":0
-        },
-        {
-            "ObjName":"炬石",
             "iSkillLev":0,
             "iGuaiwushuliang":5,
             "iGongjicishu":0,
@@ -326,7 +259,7 @@
         },
         {
             "name":"浊酒",
-            "cnt":250,
+            "cnt":1000,
             "select":true
         },
         {
@@ -666,12 +599,12 @@
     [],
     "Zhidingrenyuan":
     [
-        "sg11",
-        "sg12",
-        "sg13",
-        "sg14",
-        "sg15",
-        "sg16"
+        "bl11",
+        "bl12",
+        "bl13",
+        "bl14",
+        "bl15",
+        "bl16"
     ],
     "Heimingdan":
     [],
@@ -679,18 +612,18 @@
     [],
     "FuhuoZhiding":
     [
-        "sg11",
-        "sg12",
-        "sg13",
-        "sg14",
-        "sg15",
-        "sg16",
-        "sg21",
-        "sg22",
-        "sg23",
-        "sg24",
-        "sg25",
-        "sg26"
+        "bl11",
+        "bl12",
+        "bl13",
+        "bl14",
+        "bl15",
+        "bl16",
+        "bl21",
+        "bl22",
+        "bl23",
+        "bl24",
+        "bl25",
+        "bl26"
     ],
     "Baitan":
     {
@@ -706,8 +639,8 @@
     [],
     "vLiaoTianMingLingMingDan":
     [
-        "sg11",
-        "sg21"
+        "bl11",
+        "bl21"
     ],
     "youxiangongji":
     [],
@@ -783,7 +716,7 @@
         },
         {
             "hkname":"切换武器",
-            "hkinfo":"~"
+            "hkinfo":"Alt+~"
         },
         {
             "hkname":"退兵",
@@ -974,22 +907,22 @@
             "ConName":"cb_base_xiaobing_zhongcheng_wupin",
             "ConType":3,
             "bConCheck":false,
-            "szConContend":"",
-            "iConNum":-1
+            "szConContend":"碎银",
+            "iConNum":0
         },
         {
             "ConName":"cb_base_youxianchihongyao",
             "ConType":3,
             "bConCheck":false,
-            "szConContend":"",
-            "iConNum":-1
+            "szConContend":"牛肉大饼",
+            "iConNum":0
         },
         {
             "ConName":"cb_base_youxianchilanyao",
             "ConType":3,
             "bConCheck":false,
-            "szConContend":"",
-            "iConNum":-1
+            "szConContend":"蔘茸酒",
+            "iConNum":2
         },
         {
             "ConName":"cb_base_youxianshengji",
@@ -1183,7 +1116,7 @@
         {
             "ConName":"chk_base_xiaobing_mingliaobuxue",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -1281,7 +1214,7 @@
         {
             "ConName":"chk_base_zidongmingliao",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -1309,7 +1242,7 @@
         {
             "ConName":"chk_base_zidongxuming",
             "ConType":1,
-            "bConCheck":true,
+            "bConCheck":false,
             "szConContend":"",
             "iConNum":0
         },
@@ -1330,7 +1263,7 @@
         {
             "ConName":"chk_duiwu_bangzhuzhidingrenyuan",
             "ConType":1,
-            "bConCheck":true,
+            "bConCheck":false,
             "szConContend":"",
             "iConNum":0
         },
@@ -1393,7 +1326,7 @@
         {
             "ConName":"chk_duiwu_fangshi_mingliao",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -1456,7 +1389,7 @@
         {
             "ConName":"chk_duiwu_genshuirenwu",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -1477,7 +1410,7 @@
         {
             "ConName":"chk_duiwu_gongjilingduimubiao",
             "ConType":1,
-            "bConCheck":true,
+            "bConCheck":false,
             "szConContend":"",
             "iConNum":0
         },
@@ -1505,7 +1438,7 @@
         {
             "ConName":"chk_duiwu_haojie_jiejiefa",
             "ConType":1,
-            "bConCheck":true,
+            "bConCheck":false,
             "szConContend":"",
             "iConNum":0
         },
@@ -1820,7 +1753,7 @@
         {
             "ConName":"chk_duiwu_mengjiang_jiejiefa",
             "ConType":1,
-            "bConCheck":true,
+            "bConCheck":false,
             "szConContend":"",
             "iConNum":0
         },
@@ -1841,7 +1774,7 @@
         {
             "ConName":"chk_duiwu_mengjiang_mingliao",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -2247,7 +2180,7 @@
         {
             "ConName":"chk_guaji_anquancelue_paodituzhishiyongwupinjiaxue",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -2415,7 +2348,7 @@
         {
             "ConName":"chk_guaji_gongfang_zidongdaguai",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -2632,7 +2565,7 @@
         {
             "ConName":"chk_guaji_xunhuan_guajiditu",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -2653,7 +2586,7 @@
         {
             "ConName":"chk_guaji_xunhuan_kezhanchuansong",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -2674,7 +2607,7 @@
         {
             "ConName":"chk_guaji_xunhuan_paodituqianshiyong",
             "ConType":1,
-            "bConCheck":true,
+            "bConCheck":false,
             "szConContend":"",
             "iConNum":0
         },
@@ -2695,7 +2628,7 @@
         {
             "ConName":"chk_guaji_xunhuan_xunhuanguaji",
             "ConType":1,
-            "bConCheck":false,
+            "bConCheck":true,
             "szConContend":"",
             "iConNum":0
         },
@@ -2898,7 +2831,7 @@
         {
             "ConName":"chk_protect_youxianyongpozhoujiejie",
             "ConType":1,
-            "bConCheck":true,
+            "bConCheck":false,
             "szConContend":"",
             "iConNum":0
         },
@@ -3088,7 +3021,7 @@
             "ConName":"edt_base_xiaobing_mingliaobuxue_low",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"60",
+            "szConContend":"80",
             "iConNum":0
         },
         {
@@ -3151,7 +3084,7 @@
             "ConName":"edt_base_xiaobing_zhongcheng_wupin",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"金子",
+            "szConContend":"碎银",
             "iConNum":0
         },
         {
@@ -3263,35 +3196,35 @@
             "ConName":"edt_base_zidongqiangming_high",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"90",
+            "szConContend":"80",
             "iConNum":0
         },
         {
             "ConName":"edt_base_zidongqiangming_low",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"80",
+            "szConContend":"60",
             "iConNum":0
         },
         {
             "ConName":"edt_base_zidongxuming_low",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"90",
+            "szConContend":"0",
             "iConNum":0
         },
         {
             "ConName":"edt_duiwu_bushiduizhang",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"sg11",
+            "szConContend":"bl11",
             "iConNum":0
         },
         {
             "ConName":"edt_duiwu_fangshi_mingliao",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"0",
+            "szConContend":"80",
             "iConNum":0
         },
         {
@@ -3326,7 +3259,7 @@
             "ConName":"edt_duiwu_genshuirenwu",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"sg11",
+            "szConContend":"bl11",
             "iConNum":0
         },
         {
@@ -3417,7 +3350,7 @@
             "ConName":"edt_duiwu_mengjiang_mingliao",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"0",
+            "szConContend":"80",
             "iConNum":0
         },
         {
@@ -3599,7 +3532,7 @@
             "ConName":"edt_guaji_gongfang_fanwei1_y",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"1000",
+            "szConContend":"800",
             "iConNum":0
         },
         {
@@ -3683,7 +3616,7 @@
             "ConName":"edt_guaji_guabing_guyongbingmingzi",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"111",
+            "szConContend":"",
             "iConNum":0
         },
         {
@@ -3760,7 +3693,7 @@
             "ConName":"edt_guaji_xunhuan_ditu",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"",
+            "szConContend":"柴桑西阡",
             "iConNum":0
         },
         {
@@ -3802,7 +3735,7 @@
             "ConName":"edt_guaji_xunhuan_xiaobingshouqi",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"0",
+            "szConContend":"102",
             "iConNum":0
         },
         {
@@ -3837,7 +3770,7 @@
             "ConName":"edt_protect_xiaobing_shuliang",
             "ConType":0,
             "bConCheck":false,
-            "szConContend":"1",
+            "szConContend":"0",
             "iConNum":0
         },
         {
@@ -3990,14 +3923,14 @@
         {
             "ConName":"radio_guaji_gongfang_guajifanwei_1",
             "ConType":4,
-            "bOptionSelect":true,
+            "bOptionSelect":false,
             "szConContend":"",
             "iConNum":0
         },
         {
             "ConName":"radio_guaji_gongfang_guajifanwei_2",
             "ConType":4,
-            "bOptionSelect":false,
+            "bOptionSelect":true,
             "szConContend":"",
             "iConNum":0
         },
