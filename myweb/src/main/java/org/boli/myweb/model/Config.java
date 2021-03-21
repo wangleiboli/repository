@@ -1,89 +1,43 @@
 package org.boli.myweb.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-/**
- * 用户配置
- * 
- * @author Administrator
- *
- */
+import org.boli.myweb.entity.Itemguolv;
+
 public class Config {
 
-	/**
-	 * 物品过滤
-	 */
-	List<ItemGuolv> ItemGuolv;
-	/**
-	 * 保护技能
-	 */
-	List<ProtectSkill> ProtectSkills;
-	/**
-	 * 攻防技能
-	 */
-	List<GongfangSkill> GongfangSkills;
-	/**
-	 * 买物品设定
-	 */
-	List<Buyset> buyset;
-	/**
-	 * 宠物设定
-	 */
-	List<Petset> petset;
-	/**
-	 * 躲怪
-	 */
-	List<String> duoguai;
-	/**
-	 * 吃魂
-	 */
-	List<String> chihun;
-	/**
-	 * 指定人员
-	 */
-	List<String> Zhidingrenyuan;
-	/**
-	 * 黑名单
-	 */
-	List<String> Heimingdan;
-	/**
-	 * 跟随名单
-	 */
-	List<String> Gensuimingdan;
-	/**
-	 * 复活指定
-	 */
-	List<String> FuhuoZhiding;
-	/**
-	 * 摆摊
-	 */
-	Baitan Baitan;
-	/**
-	 * 聊天回复
-	 */
-	List<Liaotianhuifu> Liaotianhuifu;
-	/**
-	 * 聊天发言
-	 */
-	List<Liaotianfayan> Liaotianfayan;
-	/**
-	 * 屏蔽黑名单内人物发言
-	 */
-	List<String> liaotianheimingdan;
-	/**
-	 * 仅执行指定人命令
-	 */
-	List<String> vLiaoTianMingLingMingDan;
-	/**
-	 * 优先攻击
-	 */
-	List<String> youxiangongji;
-	/**
-	 * 只攻击
-	 */
-	List<String> zhigongji;
-	/**
-	 * 不攻击
-	 */
-	List<String> bugongji;
+	List<ConfigFile> configFileList = new ArrayList<ConfigFile>();
+
+	Map<String, Itemguolv> itemguolvMap = new HashMap<String, Itemguolv>();
+
+	Collection<Itemguolv> itemguolvList = new ArrayList<Itemguolv>();
+
+	public List<ConfigFile> getConfigFileList() {
+		return configFileList;
+	}
+
+	public void setConfigFileList(List<ConfigFile> configFileList) {
+		this.configFileList = configFileList;
+	}
+
+	public Map<String, Itemguolv> getItemguolvMap() {
+		return itemguolvMap;
+	}
+
+	public void setItemguolvMap(Map<String, Itemguolv> itemguolvMap) {
+		this.itemguolvMap = itemguolvMap;
+	}
+
+	public Collection<Itemguolv> getItemguolvList() {
+		return itemguolvMap.values();
+	}
+
+	public void setItemguolvList(Collection<Itemguolv> itemguolvList) {
+		this.itemguolvList = itemguolvList;
+	}
+
 }

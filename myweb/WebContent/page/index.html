@@ -6,35 +6,28 @@
 
 <link rel="stylesheet" type="text/css" href="page/css/index.css" />
 <script type="text/javascript" src="page/js/jquery/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="page/js/jsrender/jsrender.js"></script>
 <script type="text/javascript" src="page/js/index.js"></script>
 </head>
 <body>
 	<div class="left">
-		<div class="import">
+		<div class="read">
 			<label>配置文件目录:</label>
 			<div>
-				<input type="text" id="path">
+				<input type="text" id="pathname">
 			</div>
-			<input type="button" id="import" value="导入">
+			<input type="button" id="read" value="导入">
 		</div>
 		<div class="show">
 			<div class="title">
 				<div>账号</div>
 				<div>角色</div>
-				<div>配置文件</div>
-				<div>操作</div>
+				<div class="filePath">配置文件</div>
 			</div>
-			<div class="roles">
-				<div class="role">
-					<div>boli11</div>
-					<div>bl11</div>
-					<div>config.xml</div>
-					<div></div>
-				</div>
-			</div>
+			<div class="roles" id="roles"></div>
 		</div>
-		<div class="export">
-			<input type="button" id="export" value="导出">
+		<div class="save">
+			<input type="button" id="save" value="保存">
 		</div>
 		<div class="setup">
 			<div class="line">
@@ -83,44 +76,55 @@
 			<div class="iMaSu">马速</div>
 			<div class="iLev">等级</div>
 		</div>
-		<div class="items">
+		<div class="items" id="items"></div>
+	</div>
+</body>
+
+<script type="text/x-jsrender" id="role">
+				<div class="role">
+					<div>{{:username}}</div>
+					<div>{{:rolename}}</div>
+					<div class="filePath">{{:filePath}}</div>
+				</div>
+</script>
+
+<script type="text/x-jsrender" id="item">
 			<div class="item">
-				<div class="ObjName">棍子</div>
+				<div class="ObjName">{{:ObjName}}</div>
 				<div class="bSell">
-					<input type="checkbox">
+					<input type="checkbox" {{if bSell}}checked="checked"{{/if}}>
 				</div>
 				<div class="bStore">
-					<input type="checkbox">
+					<input type="checkbox" {{if bStore}}checked="checked"{{/if}}>
 				</div>
 				<div class="bDrop">
-					<input type="checkbox">
+					<input type="checkbox" {{if bDrop}}checked="checked"{{/if}}>
 				</div>
 				<div class="iShenshangliuliang">
-					<input type="text" class="num" maxlength="5" placeholder="0">
+					<input type="text" class="num" maxlength="5" placeholder="0" value="{{:iShenshangliuliang}}">
 				</div>
 				<div class="iQiangHuaCishu">
-					<input type="text" class="num" maxlength="1" placeholder="0">
+					<input type="text" class="num" maxlength="1" placeholder="0" value="{{:iQiangHuaCishu}}">
 				</div>
 				<div class="iGongji">
-					<input type="text" class="num" maxlength="3" placeholder="0">
+					<input type="text" class="num" maxlength="3" placeholder="0" value="{{:iGongji}}">
 				</div>
 				<div class="iFangyu">
-					<input type="text" class="num" maxlength="3" placeholder="0">
+					<input type="text" class="num" maxlength="3" placeholder="0" value="{{:iFangyu}}">
 				</div>
 				<div class="iWujiangji">
-					<input type="text" class="num" maxlength="3" placeholder="0">
+					<input type="text" class="num" maxlength="3" placeholder="0" value="{{:iWujiangji}}">
 				</div>
 				<div class="iMaSu">
-					<input type="text" class="num" maxlength="3" placeholder="0">
+					<input type="text" class="num" maxlength="3" placeholder="0" value="{{:iMaSu}}">
 				</div>
 				<div class="iLev">
 					<select>
-						<option value="<=" selected="selected">&lt;=</option>
-						<option value=">=">&gt;=</option>
-					</select> <input type="text" class="num" maxlength="3" placeholder="0">
+						<option value="<=" {{if !bLev_gt}}selected="selected"{{/if}}>&lt;=</option>
+						<option value=">=" {{if bLev_gt}}selected="selected"{{/if}}>&gt;=</option>
+					</select> <input type="text" class="num" maxlength="3" placeholder="0" value="{{:iLev}}">
 				</div>
 			</div>
-		</div>
-	</div>
-</body>
+</script>
+
 </html>

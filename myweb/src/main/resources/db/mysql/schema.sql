@@ -6,8 +6,8 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `itemguolv`;
-CREATE TABLE `itemguolv` (
+DROP TABLE IF EXISTS `ItemGuolv`;
+CREATE TABLE `ItemGuolv` (
   `ObjName` varchar(20) DEFAULT NULL,
   `bSell` tinyint(1) DEFAULT NULL,
   `bStore` tinyint(1) DEFAULT NULL,

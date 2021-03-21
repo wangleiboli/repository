@@ -35,28 +35,28 @@ body {
 	float: left;
 }
 
-/* left - import */
-.left .import {
+/* left - read */
+.left .read {
 	position: relative;
 }
 
-.left .import label {
+.left .read label {
 	display: block;
 	width: 120px;
 	position: absolute;
 }
 
-.left .import div {
+.left .read div {
 	display: block;
 	margin-left: 120px;
 	margin-right: 90px;
 }
 
-.left .import div input[type="text"] {
+.left .read div input[type="text"] {
 	width: 100%;
 }
 
-.left .import input[type="button"] {
+.left .read input[type="button"] {
 	display: block;
 	width: 80px;
 	position: absolute;
@@ -84,6 +84,7 @@ body {
 .left .show .roles {
 	height: 100%;
 	padding-top: 19px;
+	overflow-y: scroll;
 }
 
 .left .show .roles .role:hover {
@@ -105,12 +106,21 @@ body {
 	text-overflow: ellipsis;
 }
 
-/* left - export */
-.left .export {
+.left .show .title div.filePath, .left .show .roles .role div.filePath {
+	width: 400px;
+}
+
+.left .show .roles .role div {
+	text-align: left;
+	font-size: 12px;
+}
+
+/* left - save */
+.left .save {
 	margin-top: 20px;
 }
 
-.left .export input[type="button"] {
+.left .save input[type="button"] {
 	display: block;
 	width: 80px;
 }
@@ -187,6 +197,7 @@ body {
 .right .items {
 	height: 100%;
 	padding-top: 19px;
+	overflow-y: scroll;
 }
 
 .right .items .item:hover {
