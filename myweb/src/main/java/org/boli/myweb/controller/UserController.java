@@ -94,18 +94,18 @@ public class UserController {
 
 		myTask.startMyTask();
 
-		return userService.queryAll();
+		return userService.selectAll();
 
 	}
 
 	/**
 	 * 1.1.零散参数根据name自动装配
 	 */
-	@RequestMapping("/getById")
+	@RequestMapping("/selectById")
 	@ResponseBody
-	public User getById(long id) {
+	public User selectById(long id) {
 
-		return userService.get(id);
+		return userService.selectById(id);
 
 	}
 
@@ -113,11 +113,11 @@ public class UserController {
 	 * 1.2.零散参数name不一致
 	 * {@link RequestParam @RequestParam}:当表单元素与控制器方法的参数不匹配的情况下，使用此注解声明参数名称。
 	 */
-	@RequestMapping("/getByNum")
+	@RequestMapping("/selectByNum")
 	@ResponseBody
-	public User getByNum(@RequestParam("num") long id) {
+	public User selectByNum(@RequestParam("num") long id) {
 
-		return userService.get(id);
+		return userService.selectById(id);
 
 	}
 
@@ -125,11 +125,11 @@ public class UserController {
 	 * 2.对象自动装配<br>
 	 * id -> user.id
 	 */
-	@RequestMapping("/queryByUser")
+	@RequestMapping("/select")
 	@ResponseBody
-	public List<User> queryByUser(User user) {
+	public List<User> select(User user) {
 
-		return userService.query(user);
+		return userService.select(user);
 
 	}
 
@@ -137,11 +137,11 @@ public class UserController {
 	 * 3.域属性自动装配 <br>
 	 * user.id -> model.user.id
 	 */
-	@RequestMapping("/queryByModel")
+	@RequestMapping("/selectByModel")
 	@ResponseBody
-	public List<User> queryByModel(Model model) {
+	public List<User> selectByModel(Model model) {
 
-		return userService.query(model.getUser());
+		return userService.select(model.getUser());
 
 	}
 
@@ -149,11 +149,11 @@ public class UserController {
 	 * 4.集合自动装配 <br>
 	 * users[0].id -> model.users[0].id
 	 */
-	@RequestMapping("/queryByList")
+	@RequestMapping("/selectByList")
 	@ResponseBody
-	public List<User> queryByList(Model model) {
+	public List<User> selectByList(Model model) {
 
-		return userService.query(model.getUsers().get(0));
+		return userService.select(model.getUsers().get(0));
 
 	}
 
@@ -165,7 +165,7 @@ public class UserController {
 	@ResponseBody
 	public User get(@PathVariable long id) {
 
-		return userService.get(id);
+		return userService.selectById(id);
 
 	}
 
