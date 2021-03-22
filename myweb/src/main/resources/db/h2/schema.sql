@@ -1,14 +1,14 @@
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int NOT NULL identity,
-  `name` varchar(20) DEFAULT NULL,
-  `address` varchar(20) DEFAULT NULL,
+  `id` bigint NOT NULL IDENTITY,
+  `name` varchar(50) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
 DROP TABLE IF EXISTS `itemguolv`;
 CREATE TABLE `itemguolv` (
-  `ObjName` varchar(20) DEFAULT NULL,
+  `ObjName` varchar(50) DEFAULT NULL,
   `bSell` tinyint(1) DEFAULT NULL,
   `bStore` tinyint(1) DEFAULT NULL,
   `bDrop` tinyint(1) DEFAULT NULL,
