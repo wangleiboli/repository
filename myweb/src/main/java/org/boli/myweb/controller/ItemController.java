@@ -1,13 +1,10 @@
 package org.boli.myweb.controller;
 
-import java.util.List;
-
-import org.boli.myweb.entity.Itemguolv;
 import org.boli.myweb.model.Config;
+import org.boli.myweb.model.Result;
 import org.boli.myweb.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,17 +17,23 @@ public class ItemController {
 
 	@RequestMapping("/readConfig")
 	@ResponseBody
-	public Config readConfig(String pathname) {
+	public Result readConfig(String pathname) {
 
-		return itemService.readConfig(pathname);
+		Config config = itemService.readConfig(pathname);
+
+		Result result = new Result(config);
+		return result;
 
 	}
 
 	@RequestMapping("/saveConfig")
 	@ResponseBody
-	public String saveConfig(@RequestBody List<Itemguolv> itemguolvList) {
+	public Result saveConfig(Config config) {
 
-		return "SUCCESS";
+		itemService.saveConfig(config);
+
+		Result result = new Result();
+		return result;
 
 	}
 
