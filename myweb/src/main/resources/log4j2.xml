@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
-<Configuration status="WARN" monitorInterval="60"
-	xmlns="http://logging.apache.org/log4j/2.0/events">
+<Configuration status="WARN" monitorInterval="60">
 
-	<properties>
-		<property name="LOG_HOME">log</property>
-	</properties>
+	<Properties>
+		<Property name="LOG_HOME">log</Property>
+	</Properties>
 
 	<Appenders>
 
@@ -61,6 +60,8 @@
 		</root>
 
 		<logger name="org.boli.myweb" level="info" />
+
+		<logger name="org.mybatis" level="DEBUG"></logger>
 
 	</Loggers>
 
