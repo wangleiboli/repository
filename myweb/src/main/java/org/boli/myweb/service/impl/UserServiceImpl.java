@@ -33,21 +33,18 @@ public class UserServiceImpl implements UserService {
 	UserMapper userMapper;
 
 	@Override
-	public PageInfo<User> queryAll() {
-
-		PageHelper.startPage(1, 10);
-		List<User> usersList = userMapper.selectByExample(null);
-		PageInfo<User> pageInfo = new PageInfo<User>(usersList);
-
-		return pageInfo;
+	public User selectById(long id) {
+		return userMapper.selectByPrimaryKey(id);
 	}
 
 	@Override
-	public List<User> query(User user) {
+	public List<User> select(User user) {
 
 		UserExample example = new UserExample();
 		Criteria criteria = example.createCriteria();
-		criteria.andIdEqualTo(user.getId());
+		if (user.getId() > 0) {
+			criteria.andIdEqualTo(user.getId());
+		}
 		if (user.getName() != null) {
 			criteria.andNameLike("%" + user.getName() + "%");
 		}
@@ -56,8 +53,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User get(long id) {
-		return userMapper.selectByPrimaryKey(id);
+	public PageInfo<User> selectAll() {
+
+		PageHelper.startPage(1, 10);
+		List<User> usersList = userMapper.selectByExample(null);
+		PageInfo<User> pageInfo = new PageInfo<User>(usersList);
+
+		return pageInfo;
 	}
 
 }
