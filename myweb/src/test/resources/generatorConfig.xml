@@ -131,7 +131,7 @@
 		</javaClientGenerator>
 
 		<!-- 选择一个table来生成相关文件，可以有一个或多个table，必须要有table元素 -->
-		<!-- 选择的table会生成一下文件： -->
+		<!-- 选择的table会生成以下文件： -->
 		<!-- 1，SQL map文件 -->
 		<!-- 2，生成一个主键类； -->
 		<!-- 3，除了BLOB和主键的其他字段的类； -->
@@ -191,8 +191,8 @@
 			<!-- 如果设置了runtimeCatalog，那么在生成的SQL中，使用该指定的catalog，而不是table元素上的catalog -->
 			<!-- <property name="runtimeCatalog" value=""/> -->
 
-			<!-- 如果设置了runtimeSchema，那么在生成的SQL中，使用该指定的schema，而不是table元素上的schema <property -->
-			<!-- name="runtimeSchema" value=""/> -->
+			<!-- 如果设置了runtimeSchema，那么在生成的SQL中，使用该指定的schema，而不是table元素上的schema -->
+			<!-- <property name="runtimeSchema" value=""/> -->
 
 			<!-- 如果设置了runtimeTableName，那么在生成的SQL中，使用该指定的tablename，而不是table元素上的tablename -->
 			<!-- <property name="runtimeTableName" value=""/> -->
