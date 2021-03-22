@@ -84,7 +84,7 @@ body {
 .left .show .roles {
 	height: 100%;
 	padding-top: 19px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .left .show .roles .role:hover {
@@ -197,7 +197,7 @@ body {
 .right .items {
 	height: 100%;
 	padding-top: 19px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .right .items .item:hover {
