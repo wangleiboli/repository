@@ -2,11 +2,13 @@ package org.boli.myweb.service.impl;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,17 +16,24 @@ import java.util.List;
 import java.util.Map;
 
 import org.boli.myweb.entity.Itemguolv;
+import org.boli.myweb.mapper.ItemguolvMapper;
 import org.boli.myweb.model.Config;
 import org.boli.myweb.model.ConfigFile;
 import org.boli.myweb.service.ItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class ItemServiceImpl implements ItemService {
+
+	private static final Logger logger = LoggerFactory.getLogger(ItemServiceImpl.class);
+
+	@Autowired
+	ItemguolvMapper itemguolvMapper;
 
 	@Override
 	public Config readConfig(String pathname) {
@@ -32,6 +41,8 @@ public class ItemServiceImpl implements ItemService {
 		Config config = new Config();
 
 		List<File> configFileList = getConfigFile(pathname);
+
+		Map<String, Itemguolv> itemguolvMap = new HashMap<String, Itemguolv>();
 
 		for (File file : configFileList) {
 
@@ -43,11 +54,13 @@ public class ItemServiceImpl implements ItemService {
 
 			config.getConfigFileList().add(configFile);
 
-			Map<String, Itemguolv> itemguolvMap = readItemguolv(file);
-
-			config.getItemguolvMap().putAll(itemguolvMap);
+			itemguolvMap.putAll(readItemguolv(file));
 
 		}
+
+		itemguolvMap.putAll(readItemguolv());
+
+		config.getItemguolvList().addAll(itemguolvMap.values());
 
 		return config;
 	}
@@ -103,7 +116,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	/**
-	 * 读取物品过滤信息
+	 * 从配置文件读取物品过滤信息
 	 * 
 	 * @param file
 	 * @return
@@ -120,7 +133,7 @@ public class ItemServiceImpl implements ItemService {
 
 			Reader reader = new InputStreamReader(inputStream, Charset.forName("GBK"));
 
-			Map<?, ?> map = mapper.readValue(reader, Map.class);
+			Map map = mapper.readValue(reader, Map.class);
 
 			reader.close();
 
@@ -151,17 +164,100 @@ public class ItemServiceImpl implements ItemService {
 
 			}
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			logger.error("", e);
 		}
 
 		return itemguolvMap;
+	}
+
+	/**
+	 * 从数据库读取物品过滤信息
+	 * 
+	 * @return
+	 */
+	public Map<String, Itemguolv> readItemguolv() {
+
+		Map<String, Itemguolv> itemguolvMap = new HashMap<String, Itemguolv>();
+
+		List<Itemguolv> itemguolvList = itemguolvMapper.selectByExample(null);
+
+		for (Itemguolv itemguolv : itemguolvList) {
+
+			itemguolvMap.put(itemguolv.getObjname(), itemguolv);
+
+		}
+
+		return itemguolvMap;
+
+	}
+
+	@Override
+	public void saveConfig(Config config) {
+
+		List<Itemguolv> itemguolvList = config.getItemguolvList();
+
+		saveItemguolv(itemguolvList);
+
+		for (ConfigFile configFile : config.getConfigFileList()) {
+			saveItemguolv(configFile, itemguolvList);
+		}
+
+	}
+
+	/**
+	 * 物品过滤信息写入配置文件
+	 * 
+	 * @param config
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void saveItemguolv(ConfigFile configFile, List<Itemguolv> itemguolvList) {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		File file = new File(configFile.getFilePath());
+
+		try {
+			InputStream inputStream = new FileInputStream(file);
+
+			Reader reader = new InputStreamReader(inputStream, Charset.forName("GBK"));
+
+			Map map = mapper.readValue(reader, Map.class);
+
+			reader.close();
+
+			inputStream.close();
+
+			map.put("ItemGuolv", itemguolvList);
+
+			OutputStream outputStream = new FileOutputStream(file, false);
+
+			Writer writer = new OutputStreamWriter(outputStream, Charset.forName("GBK"));
+
+			mapper.writeValue(writer, map);
+
+			writer.close();
+
+			outputStream.close();
+
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+	}
+
+	/**
+	 * 物品过滤信息写入数据库
+	 * 
+	 * @param itemguolvList
+	 */
+	public void saveItemguolv(List<Itemguolv> itemguolvList) {
+
+		itemguolvMapper.deleteByExample(null);
+
+		for (Itemguolv itemguolv : itemguolvList) {
+			itemguolvMapper.insert(itemguolv);
+		}
+
 	}
 
 }
