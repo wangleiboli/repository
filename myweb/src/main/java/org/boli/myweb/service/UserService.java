@@ -8,10 +8,10 @@ import com.github.pagehelper.PageInfo;
 
 public interface UserService {
 
-	PageInfo<User> queryAll();
+	User selectById(long id);
 
-	List<User> query(User user);
+	List<User> select(User user);
 
-	User get(long id);
+	PageInfo<User> selectAll();
 
 }
