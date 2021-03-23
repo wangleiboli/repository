@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html class="html">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet" type="text/css" href="page/css/index.css" />
+<link rel="stylesheet" type="text/css" href="page/css/index.css">
+<link rel="stylesheet" type="text/css"
+	href="page/lib/glyphicons-halflings/css/font.css">
 <script type="text/javascript" src="page/js/jquery/jquery-3.6.0.js"></script>
 <script type="text/javascript" src="page/js/jsrender/jsrender.js"></script>
 <script type="text/javascript" src="page/js/index.js"></script>
 </head>
-<body>
+<body class="body">
 	<div class="left">
 		<div class="read">
 			<label>配置文件目录:</label>
@@ -32,36 +34,45 @@
 		<div class="setup">
 			<div class="line">
 				<label class="ObjName">物品名称:</label> <input type="text" id="ObjName"
-					maxlength="20"> <input type="checkbox" id="bSell">
-				<label class="bSell" for="bSell">卖</label> <input type="checkbox"
-					id="bStore"> <label class="bStore" for="bStore">存</label> <input
-					type="checkbox" id="bDrop"> <label class="bDrop"
-					for="bDrop">丢</label> <input type="button" id="add" value="添加">
-				<input type="button" id="query" value="查找"> <input
-					type="button" id="delete" value="删除">
+					class="ObjName" maxlength="20"> <input type="checkbox"
+					id="bSell"> <label class="bSell" for="bSell">卖</label> <input
+					type="checkbox" id="bStore"> <label class="bStore"
+					for="bStore">存</label> <input type="checkbox" id="bDrop"> <label
+					class="bDrop" for="bDrop">丢</label> <input type="button" id="add"
+					class="add" value="添加"> <input type="button" id="query"
+					value="查找"> <input type="button" id="delete" value="删除">
 			</div>
 			<div class="line">
 				<label class="iQiangHuaCishu">强化次数:</label> <input type="text"
-					class="num" maxlength="1" placeholder="0"> <label
-					class="iMaSu">马速:</label> <input type="text" class="num"
-					maxlength="3" placeholder="0"> <label class="iFangyu">防御:</label>
-				<input type="text" class="num" maxlength="3" placeholder="0">
-				<label class="iGongji">攻击:</label> <input type="text" class="num"
-					maxlength="3" placeholder="0"><input type="button"
-					id="reset" value="清空">
+					class="num" id="iQiangHuaCishu" maxlength="1" placeholder="0">
+				<label class="iMaSu">马速:</label> <input type="text" id="iMaSu"
+					class="num" maxlength="3" placeholder="0"> <label
+					class="iFangyu">防御:</label> <input type="text" id="iFangyu"
+					class="num" maxlength="3" placeholder="0"> <label
+					class="iGongji">攻击:</label> <input type="text" id="iGongji"
+					class="num" maxlength="3" placeholder="0"><input
+					type="button" id="reset" class="reset" value="清空">
 			</div>
 			<div class="line">
 				<label class="iShenshangliuliang">身上留量:</label> <input type="text"
-					class="num" maxlength="5" placeholder="0"> <label
-					class="iWujiangji">武将技:</label> <input type="text" class="num"
-					maxlength="3" placeholder="0"> <label class="iLev">等级:</label>
-				<select><option value="false" selected="selected">&lt;=</option>
-					<option value="true">&gt;</option></select> <input type="text" class="num"
-					maxlength="3" placeholder="0"><label>保留</label>
+					id="iShenshangliuliang" class="num" maxlength="5" placeholder="0">
+				<label class="iWujiangji">武将技:</label> <input type="text"
+					id="iWujiangji" class="num" maxlength="3" placeholder="0">
+				<label class="iLev">等级:</label> <select id="bLev_gt"><option
+						value="false" selected="selected">&lt;=</option>
+					<option value="true">&gt;=</option></select> <input type="text" id="iLev"
+					class="num" maxlength="3" placeholder="0"><label>保留</label>
 			</div>
 		</div>
 	</div>
-	<div class="center"></div>
+	<div class="center">
+		<div class="toolbar">
+			<div class="top glyphicon-chevron-up"></div>
+			<div class="up glyphicon-arrow-up"></div>
+			<div class="down glyphicon-arrow-down"></div>
+			<div class="bottom glyphicon-chevron-down"></div>
+		</div>
+	</div>
 	<div class="right">
 		<div class="title">
 			<div class="ObjName">物品名称</div>
@@ -101,28 +112,29 @@
 					<input type="checkbox" {{if bDrop}}checked="checked"{{/if}}>
 				</div>
 				<div class="iShenshangliuliang">
-					<input type="text" class="num" maxlength="5" placeholder="0" value="{{:iShenshangliuliang}}">
+					<input type="text" class="num" maxlength="5" placeholder="0" {{if iShenshangliuliang > 0}}value="{{:iShenshangliuliang}}"{{/if}}>
 				</div>
 				<div class="iQiangHuaCishu">
-					<input type="text" class="num" maxlength="1" placeholder="0" value="{{:iQiangHuaCishu}}">
+					<input type="text" class="num" maxlength="1" placeholder="0" {{if iQiangHuaCishu > 0}}value="{{:iQiangHuaCishu}}"{{/if}}>
 				</div>
 				<div class="iGongji">
-					<input type="text" class="num" maxlength="3" placeholder="0" value="{{:iGongji}}">
+					<input type="text" class="num" maxlength="3" placeholder="0" {{if iGongji > 0}}value="{{:iGongji}}"{{/if}}>
 				</div>
 				<div class="iFangyu">
-					<input type="text" class="num" maxlength="3" placeholder="0" value="{{:iFangyu}}">
+					<input type="text" class="num" maxlength="3" placeholder="0" {{if iFangyu > 0}}value="{{:iFangyu}}"{{/if}}>
 				</div>
 				<div class="iWujiangji">
-					<input type="text" class="num" maxlength="3" placeholder="0" value="{{:iWujiangji}}">
+					<input type="text" class="num" maxlength="3" placeholder="0" {{if iWujiangji > 0}}value="{{:iWujiangji}}"{{/if}}>
 				</div>
 				<div class="iMaSu">
-					<input type="text" class="num" maxlength="3" placeholder="0" value="{{:iMaSu}}">
+					<input type="text" class="num" maxlength="3" placeholder="0" {{if iMaSu > 0}}value="{{:iMaSu}}"{{/if}}>
 				</div>
 				<div class="iLev">
 					<select>
 						<option value="false" {{if !bLev_gt}}selected="selected"{{/if}}>&lt;=</option>
 						<option value="true" {{if bLev_gt}}selected="selected"{{/if}}>&gt;=</option>
-					</select> <input type="text" class="num" maxlength="3" placeholder="0" value="{{:iLev}}">
+					</select>
+					<input type="text" class="num" maxlength="3" placeholder="0" {{if iLev > 0}}value="{{:iLev}}"{{/if}}>
 				</div>
 			</div>
 </script>
