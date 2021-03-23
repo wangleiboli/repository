@@ -7,9 +7,11 @@ $().ready(function() {
 	/**
 	 * 数字输入框
 	 */
-	$('input.num').on('keyup change', function() {
+	$('body').on('keyup change', 'input.num', function() {
 		// debugger;
 		var value = $(this).val().replace(/[^\d]/g, '');
+		value *= 1;
+		value = value == 0 ? '' : value;
 		$(this).val(value);
 		// console.log(e.type);
 	});
@@ -91,4 +93,231 @@ $().ready(function() {
 		});
 
 	});
+	
+	/**
+	 * 角色行绑定事件
+	 */
+	$('.roles').on('click', '.role', function(){
+		$('.role').removeClass('select');
+		$(this).addClass('select');
+	});
+	
+	/**
+	 * 物品行绑定联动事件
+	 */
+	$('.items').on('click', '.item', function(){
+		$('.item').removeClass('select');
+		$(this).addClass('select');
+		
+		$('#ObjName').val($(this).find('.ObjName').text());
+		$('#bSell').prop('checked', $(this).find('.bSell input').prop('checked'));
+		$('#bStore').prop('checked', $(this).find('.bStore input').prop('checked'));
+		$('#bDrop').prop('checked', $(this).find('.bDrop input').prop('checked'));
+		$('#iShenshangliuliang').val($(this).find('.iShenshangliuliang input').val());
+		$('#iQiangHuaCishu').val($(this).find('.iQiangHuaCishu input').val());
+		$('#iGongji').val($(this).find('.iGongji input').val());
+		$('#iFangyu').val($(this).find('.iFangyu input').val());
+		$('#iWujiangji').val($(this).find('.iWujiangji input').val());
+		$('#iMaSu').val($(this).find('.iMaSu input').val());
+		$('#bLev_gt').val($(this).find('.iLev select').val());
+		$('#iLev').val($(this).find('.iLev input').val());
+	});
+	
+	/**
+	 * 卖丢单选
+	 */
+	$('.items').on('click', '.bSell>input, .bDrop>input', function(){
+		
+		if($(this).prop('checked')){
+			
+			if($(this).parent().hasClass('bSell')){
+				$(this).parent().siblings('.bDrop').children('input').prop('checked', false);
+			}else{
+				$(this).parent().siblings('.bSell').children('input').prop('checked', false);
+			}
+		}
+	});
+	$('#bSell, #bDrop').on('click', function(){
+		
+		if($(this).prop('checked')){
+			
+			if($(this).prop('id') == 'bSell'){
+				$('#bDrop').prop('checked', false);
+			}else{
+				$('#bSell').prop('checked', false);
+			}
+		}
+	});
+	
+	/**
+	 * 排序按钮绑定点击事件
+	 */
+	$('.toolbar>div').on('click', function(e){
+		
+		if($(this).hasClass('top')){
+			
+			$('.item.select').each(function(){
+				var first = $(this).siblings(":first");
+				first.before($(this));
+			});
+		}else if($(this).hasClass('up')){
+			
+			$('.item.select').each(function(){
+				var prev = $(this).prev();
+				$(this).after(prev);
+			});
+		}else if($(this).hasClass('down')){
+			
+			$('.item.select').each(function(){
+				var next = $(this).next();
+				$(this).before(next);
+			});
+		}else if($(this).hasClass('bottom')){
+			
+			$('.item.select').each(function(){
+				var last = $(this).siblings(":last");
+				last.after($(this));
+			});
+		}
+		
+		// 阻止默认事件和冒泡事件
+		// return false;
+		// 阻止默认事件但是允许冒泡事件
+		// e.preventDefault();
+		// 阻止冒泡但是允许默认事件
+		// e.stopPropagation();
+	});
+	
+	/**
+	 * 增
+	 */
+	$('#add').on('click', function(){
+		var ObjName = $.trim($('#ObjName').val());
+		if(ObjName == ''){
+			return;
+		}
+		
+		if(!$('#bSell').prop('checked') && !$('#bStore').prop('checked') && !$('#bDrop').prop('checked')){
+			$('#bSell').prop('checked', true);
+		}
+		
+		var exist = false;
+		$('.item>.ObjName').filter(function(){
+			
+			exist = $.trim($(this).text()) == ObjName ? true : exist;
+			return $.trim($(this).text()) == ObjName;
+			
+		}).each(function(){
+			
+			$(this).parent().find('.bSell input').prop('checked', $('#bSell').prop('checked'));
+			$(this).parent().find('.bStore input').prop('checked', $('#bStore').prop('checked'));
+			$(this).parent().find('.bDrop input').prop('checked', $('#bDrop').prop('checked'));
+			$(this).parent().find('.iShenshangliuliang input').val($('#iShenshangliuliang').val());
+			$(this).parent().find('.iQiangHuaCishu input').val($('#iQiangHuaCishu').val());
+			$(this).parent().find('.iGongji input').val($('#iGongji').val());
+			$(this).parent().find('.iFangyu input').val($('#iFangyu').val());
+			$(this).parent().find('.iWujiangji input').val($('#iWujiangji').val());
+			$(this).parent().find('.iMaSu input').val($('#iMaSu').val());
+			$(this).parent().find('.iLev select').val($('#bLev_gt').val());
+			$(this).parent().find('.iLev input').val($('#iLev').val());
+				
+			$(this).trigger('click');
+			$('.items').scrollTop($(this).parent().index() * 19);
+			
+		});
+		
+		if(!exist){
+			var itemguolvList = new Array();
+			var data = {
+					ObjName : $.trim($('#ObjName').val()),
+					bSell : $('#bSell').prop('checked'),
+					bStore : $('#bStore').prop('checked'),
+					bDrop : $('#bDrop').prop('checked'),
+					iShenshangliuliang : $('#iShenshangliuliang').val(),
+					iQiangHuaCishu : $('#iQiangHuaCishu').val(),
+					iGongji : $('#iGongji').val(),
+					iFangyu : $('#iFangyu').val(),
+					iWujiangji : $('#iWujiangji').val(),
+					iMaSu : $('#iMaSu').val(),
+					bLev_gt : $('#bLev_gt').val(),
+					iLev : $('#iLev').val()
+			};
+			itemguolvList.push(data);
+			
+			var html_item = $('#item').render(itemguolvList);
+			$('#items').append(html_item);
+			
+			$('.items>.item:last').trigger('click');
+			$('.items').scrollTop($('.items>.item:last').index() * 19);
+		}
+		
+	});
+	
+	/**
+	 * 删
+	 */
+	$('#delete').on('click', function(){
+		$('.items>.item').removeClass('select');
+		
+		var ObjName = $.trim($('#ObjName').val());
+		if(ObjName == ''){
+			return;
+		}
+		
+		$('.item>.ObjName').filter(function(){
+			
+			return $.trim($(this).text()) == ObjName;
+			
+		}).each(function(){
+			
+			$(this).parent().remove();
+			
+		});
+		
+	});
+	
+	/**
+	 * 查
+	 */
+	$('#query').on('click', function(){
+		$('.items>.item').removeClass('select');
+		
+		var ObjName = $.trim($('#ObjName').val());
+		if(ObjName == ''){
+			return;
+		}
+		
+		$('.item>.ObjName').filter(function(){
+			
+			return $.trim($(this).text()) == ObjName;
+			
+		}).each(function(){
+			
+			$(this).trigger('click');
+			$('.items').scrollTop($(this).parent().index() * 19);
+			
+		});
+		
+	});
+	
+	/**
+	 * 清空
+	 */
+	$('#reset').on('click', function(){
+		$('.items>.item').removeClass('select');
+		
+		$('#ObjName').val('');
+		$('#bSell').prop('checked', false);
+		$('#bStore').prop('checked', false);
+		$('#bDrop').prop('checked', false);
+		$('#iShenshangliuliang').val('');
+		$('#iQiangHuaCishu').val('');
+		$('#iGongji').val('');
+		$('#iFangyu').val('');
+		$('#iWujiangji').val('');
+		$('#iMaSu').val('');
+		$('#bLev_gt').val('false');
+		$('#iLev').val('');
+	});
+	
 });
