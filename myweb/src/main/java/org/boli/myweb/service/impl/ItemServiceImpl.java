@@ -11,6 +11,8 @@ import java.io.Reader;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +21,7 @@ import org.boli.myweb.entity.Itemguolv;
 import org.boli.myweb.mapper.ItemguolvMapper;
 import org.boli.myweb.model.Config;
 import org.boli.myweb.model.ConfigFile;
+import org.boli.myweb.model.Itemguolv4Config;
 import org.boli.myweb.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,7 +63,36 @@ public class ItemServiceImpl implements ItemService {
 
 		itemguolvMap.putAll(readItemguolv());
 
-		config.getItemguolvList().addAll(itemguolvMap.values());
+		List<Itemguolv> itemguolvList = new ArrayList<Itemguolv>(itemguolvMap.values());
+
+		Collections.sort(itemguolvList, new Comparator<Itemguolv>() {
+
+			@Override
+			public int compare(Itemguolv o1, Itemguolv o2) {
+
+				if (o1.getType().compareTo(o2.getType()) > 0) {
+					return 1;
+				} else if (o1.getType().compareTo(o2.getType()) == 0) {
+					if (o1.getSubtype().compareTo(o2.getSubtype()) > 0) {
+						return 1;
+					} else if (o1.getSubtype().compareTo(o2.getSubtype()) == 0) {
+						if (o1.getIndex() == null) {
+							return -1;
+						} else if (o2.getIndex() == null) {
+							return 1;
+						} else {
+							return o1.getIndex().compareTo(o2.getIndex());
+						}
+					} else {
+						return -1;
+					}
+				} else {
+					return -1;
+				}
+			}
+		});
+
+		config.setItemguolvList(itemguolvList);
 
 		return config;
 	}
@@ -157,7 +189,7 @@ public class ItemServiceImpl implements ItemService {
 					Boolean bLev_gt = (Boolean) ItemGuolv.get("bLev_gt");
 
 					Itemguolv itemguolv = new Itemguolv(ObjName, bSell, bStore, bDrop, iQiangHuaCishu, iMaSu, iFangyu,
-							iGongji, iShenshangliuliang, iWujiangji, iLev, bLev_gt);
+							iGongji, iShenshangliuliang, iWujiangji, iLev, bLev_gt, null, null, 0);
 
 					itemguolvMap.put(ObjName, itemguolv);
 				}
@@ -199,8 +231,13 @@ public class ItemServiceImpl implements ItemService {
 
 		saveItemguolv(itemguolvList);
 
+		List<Itemguolv4Config> itemguolv4ConfigList = new ArrayList<Itemguolv4Config>();
+		for (Itemguolv itemguolv : itemguolvList) {
+			itemguolv4ConfigList.add(new Itemguolv4Config(itemguolv));
+		}
+
 		for (ConfigFile configFile : config.getConfigFileList()) {
-			saveItemguolv(configFile, itemguolvList);
+			saveItemguolv(configFile, itemguolv4ConfigList);
 		}
 
 	}
@@ -211,7 +248,7 @@ public class ItemServiceImpl implements ItemService {
 	 * @param config
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void saveItemguolv(ConfigFile configFile, List<Itemguolv> itemguolvList) {
+	public void saveItemguolv(ConfigFile configFile, List<Itemguolv4Config> itemguolv4ConfigList) {
 
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -228,7 +265,7 @@ public class ItemServiceImpl implements ItemService {
 
 			inputStream.close();
 
-			map.put("ItemGuolv", itemguolvList);
+			map.put("ItemGuolv", itemguolv4ConfigList);
 
 			OutputStream outputStream = new FileOutputStream(file, false);
 
@@ -255,7 +292,7 @@ public class ItemServiceImpl implements ItemService {
 		itemguolvMapper.deleteByExample(null);
 
 		for (Itemguolv itemguolv : itemguolvList) {
-			itemguolvMapper.insert(itemguolv);
+			itemguolvMapper.insertSelective(itemguolv);
 		}
 
 	}
