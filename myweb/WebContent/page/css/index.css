@@ -72,8 +72,10 @@ body.body {
 	position: relative;
 	border: 1px gray solid;
 	height: 200px;
+	padding-top: 19px;
 	margin-top: 20px;
 	font-size: 14px;
+	line-height: 18px;
 	text-align: center;
 }
 
@@ -81,21 +83,13 @@ body.body {
 	width: 100%;
 	font-weight: bold;
 	position: absolute;
+	top: 0px;
 	background-color: #F0F0F0;
 }
 
 .left>.show>.roles {
 	height: 100%;
-	padding-top: 19px;
 	overflow-y: auto;
-}
-
-.left>.show>.roles>.role:hover {
-	background-color: yellow;
-}
-
-.left>.show>.roles>.role.select {
-	background-color: #E0E0E0;
 }
 
 .left>.show>.title, .left>.show>.roles>.role {
@@ -115,6 +109,14 @@ body.body {
 
 .left>.show>.title>div.filePath, .left>.show>.roles>.role>div.filePath {
 	width: 400px;
+}
+
+.left>.show>.roles>.role:hover {
+	background-color: yellow;
+}
+
+.left>.show>.roles>.role.select {
+	background-color: #E0E0E0;
 }
 
 .left>.show>.roles>.role>div {
@@ -215,7 +217,9 @@ body.body {
 .right {
 	position: relative;
 	border: 1px gray solid;
+	padding-top: 19px;
 	font-size: 14px;
+	line-height: 18px;
 	text-align: center;
 }
 
@@ -223,22 +227,13 @@ body.body {
 	width: 100%;
 	font-weight: bold;
 	position: absolute;
+	top: 0px;
 	background-color: #F0F0F0;
 }
 
 .right>.items {
 	height: 100%;
-	padding-top: 19px;
-	padding-bottom: 19px;
 	overflow-y: auto;
-}
-
-.right>.items>.item:hover, .right>.items>.item:hover * {
-	background-color: yellow;
-}
-
-.right>.items>.item.select, .right>.items>.item.select * {
-	background-color: #E0E0E0;
 }
 
 .right>.title, .right>.items>.item {
@@ -257,11 +252,29 @@ body.body {
 }
 
 .right>.title>div.ObjName, .right>.items>.item>div.ObjName {
-	width: 160px;
+	width: 161px;
 }
 
 .right>.title>div.iLev, .right>.items>.item>div.iLev {
 	width: 81px;
+}
+
+.right>.title>div.types, .right>.items>.item>div.types {
+	width: 161px;
+}
+
+.right>.title>div.types>label {
+	color: rgb(255, 140, 60);
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.right>.items>.item:hover, .right>.items>.item:hover * {
+	background-color: yellow;
+}
+
+.right>.items>.item.select, .right>.items>.item.select * {
+	background-color: #E0E0E0;
 }
 
 .right>.items>.item>div>input[type="text"], .right>.items>.item>div>select
@@ -281,5 +294,10 @@ body.body {
 .right>.items>.item>div.iLev>input[type="text"], .right>.items>.item>div.iLev>select
 	{
 	width: 40px;
+	float: left;
+}
+
+.right>.items>.item>div.types>select {
+	width: 80px;
 	float: left;
 }
