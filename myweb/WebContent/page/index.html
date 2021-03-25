@@ -86,6 +86,9 @@
 			<div class="iWujiangji">武将技</div>
 			<div class="iMaSu">马速</div>
 			<div class="iLev">等级</div>
+			<div class="types">
+				类型 <label class="sort glyphicon-sort-by-attributes"></label>
+			</div>
 		</div>
 		<div class="items" id="items"></div>
 	</div>
@@ -135,6 +138,70 @@
 						<option value="true" {{if bLev_gt}}selected="selected"{{/if}}>&gt;=</option>
 					</select>
 					<input type="text" class="num" maxlength="3" placeholder="0" {{if iLev > 0}}value="{{:iLev}}"{{/if}}>
+				</div>
+				<div class="types">
+					<select class="type">
+						<option value=""></option>
+						<option value="A_武器" {{if type == "A_武器"}}selected="selected"{{/if}}>武器</option>
+						<option value="B_装备Ⅰ" {{if type == "B_装备Ⅰ"}}selected="selected"{{/if}}>装备Ⅰ</option>
+						<option value="C_装备Ⅱ" {{if type == "C_装备Ⅱ"}}selected="selected"{{/if}}>装备Ⅱ</option>
+						<option value="D_物品及书籍" {{if type == "D_物品及书籍"}}selected="selected"{{/if}}>物品及书籍</option>
+						<option value="E_扮装类" {{if type == "E_扮装类"}}selected="selected"{{/if}}>扮装类</option>
+					</select>
+					{{if type == "A_武器"}}
+					<select class="subType">
+						<option value=""></option>
+						<option value="A_短兵" {{if subType == "A_短兵"}}selected="selected"{{/if}}>短兵</option>
+						<option value="B_长兵" {{if subType == "B_长兵"}}selected="selected"{{/if}}>长兵</option>
+						<option value="C_重兵" {{if subType == "C_重兵"}}selected="selected"{{/if}}>重兵</option>
+						<option value="D_射击" {{if subType == "D_射击"}}selected="selected"{{/if}}>射击</option>
+						<option value="E_双手" {{if subType == "E_双手"}}selected="selected"{{/if}}>双手</option>
+						<option value="F_其他" {{if subType == "F_其他"}}selected="selected"{{/if}}>其他</option>
+					</select>
+					{{else type == "B_装备Ⅰ"}}
+					<select class="subType">
+						<option value=""></option>
+						<option value="A_头盔" {{if subType == "A_头盔"}}selected="selected"{{/if}}>头盔</option>
+						<option value="B_铠甲" {{if subType == "B_铠甲"}}selected="selected"{{/if}}>铠甲</option>
+						<option value="C_鞋" {{if subType == "C_鞋"}}selected="selected"{{/if}}>鞋</option>
+						<option value="D_马" {{if subType == "D_马"}}selected="selected"{{/if}}>马</option>
+						<option value="E_装饰品" {{if subType == "E_装饰品"}}selected="selected"{{/if}}>装饰品</option>
+					</select>
+					{{else type == "C_装备Ⅱ"}}
+					<select class="subType">
+						<option value=""></option>
+						<option value="A_小盾" {{if subType == "A_小盾"}}selected="selected"{{/if}}>小盾</option>
+						<option value="B_盾" {{if subType == "B_盾"}}selected="selected"{{/if}}>盾</option>
+						<option value="C_护腕" {{if subType == "C_护腕"}}selected="selected"{{/if}}>护腕</option>
+						<option value="D_披风" {{if subType == "D_披风"}}selected="selected"{{/if}}>披风</option>
+						<option value="E_内衣" {{if subType == "E_内衣"}}selected="selected"{{/if}}>内衣</option>
+					</select>
+					{{else type == "D_物品及书籍"}}
+					<select class="subType">
+						<option value=""></option>
+						<option value="A_使用道具" {{if subType == "A_使用道具"}}selected="selected"{{/if}}>使用道具</option>
+						<option value="B_配方单" {{if subType == "B_配方单"}}selected="selected"{{/if}}>配方单</option>
+						<option value="C_技能书" {{if subType == "C_技能书"}}selected="selected"{{/if}}>技能书</option>
+						<option value="D_士兵" {{if subType == "D_士兵"}}selected="selected"{{/if}}>士兵</option>
+						<option value="E_武魂" {{if subType == "E_武魂"}}selected="selected"{{/if}}>武魂</option>
+						<option value="F_兵符" {{if subType == "F_兵符"}}selected="selected"{{/if}}>兵符</option>
+						<option value="G_杂项" {{if subType == "G_杂项"}}selected="selected"{{/if}}>杂项</option>
+					</select>
+					{{else type == "E_扮装类"}}
+					<select class="subType">
+						<option value=""></option>
+						<option value="A_扮装头盔" {{if subType == "A_扮装头盔"}}selected="selected"{{/if}}>扮装头盔</option>
+						<option value="B_扮装铠甲" {{if subType == "B_扮装铠甲"}}selected="selected"{{/if}}>扮装铠甲</option>
+						<option value="C_扮装鞋" {{if subType == "C_扮装鞋"}}selected="selected"{{/if}}>扮装鞋</option>
+						<option value="D_全身造型" {{if subType == "D_全身造型"}}selected="selected"{{/if}}>全身造型</option>
+						<option value="E_扮装披风" {{if subType == "E_扮装披风"}}selected="selected"{{/if}}>扮装披风</option>
+						<option value="F_扮装马" {{if subType == "F_扮装马"}}selected="selected"{{/if}}>扮装马</option>
+					</select>
+					{{else}}
+					<select class="subType" style="display: none;">
+						<option value=""></option>
+					</select>
+					{{/if}}
 				</div>
 			</div>
 </script>
