@@ -64,20 +64,25 @@ $().ready(function() {
 
 		});
 
+		sortItem();
+		
 		$('.item').each(function(index) {
 			
 			data['itemguolvList['+index+'].objname'] = $(this).find('.ObjName').text();
-			data['itemguolvList['+index+'].bsell'] = $(this).find('.bSell input[type="checkbox"]').is(':checked');
-			data['itemguolvList['+index+'].bstore'] = $(this).find('.bStore input[type="checkbox"]').is(':checked');
-			data['itemguolvList['+index+'].bdrop'] = $(this).find('.bDrop input[type="checkbox"]').is(':checked');
-			data['itemguolvList['+index+'].iqianghuacishu'] = $(this).find('.iQiangHuaCishu input[type="text"]').val();
-			data['itemguolvList['+index+'].imasu'] = $(this).find('.iMaSu input[type="text"]').val();
-			data['itemguolvList['+index+'].ifangyu'] = $(this).find('.iFangyu input[type="text"]').val();
-			data['itemguolvList['+index+'].igongji'] = $(this).find('.iGongji input[type="text"]').val();
-			data['itemguolvList['+index+'].ishenshangliuliang'] = $(this).find('.iShenshangliuliang input[type="text"]').val();
-			data['itemguolvList['+index+'].iwujiangji'] = $(this).find('.iWujiangji input[type="text"]').val();
-			data['itemguolvList['+index+'].ilev'] = $(this).find('.iLev input[type="text"]').val();
-			data['itemguolvList['+index+'].blevGt'] = $(this).find('.iLev select').val();
+			data['itemguolvList['+index+'].bsell'] = $(this).find('.bSell>input[type="checkbox"]').is(':checked');
+			data['itemguolvList['+index+'].bstore'] = $(this).find('.bStore>input[type="checkbox"]').is(':checked');
+			data['itemguolvList['+index+'].bdrop'] = $(this).find('.bDrop>input[type="checkbox"]').is(':checked');
+			data['itemguolvList['+index+'].iqianghuacishu'] = $(this).find('.iQiangHuaCishu>input[type="text"]').val();
+			data['itemguolvList['+index+'].imasu'] = $(this).find('.iMaSu>input[type="text"]').val();
+			data['itemguolvList['+index+'].ifangyu'] = $(this).find('.iFangyu>input[type="text"]').val();
+			data['itemguolvList['+index+'].igongji'] = $(this).find('.iGongji>input[type="text"]').val();
+			data['itemguolvList['+index+'].ishenshangliuliang'] = $(this).find('.iShenshangliuliang>input[type="text"]').val();
+			data['itemguolvList['+index+'].iwujiangji'] = $(this).find('.iWujiangji>input[type="text"]').val();
+			data['itemguolvList['+index+'].ilev'] = $(this).find('.iLev>input[type="text"]').val();
+			data['itemguolvList['+index+'].blevGt'] = $(this).find('.iLev>select').val();
+			data['itemguolvList['+index+'].type'] = $(this).find('.types>select.type').val();
+			data['itemguolvList['+index+'].subtype'] = $(this).find('.types>select.subType').val();
+			data['itemguolvList['+index+'].index'] = index + 1;
 
 		});
 		
@@ -124,6 +129,35 @@ $().ready(function() {
 	});
 	
 	/**
+	 * 类型选择联动
+	 */
+	var types = {
+			'A_武器' : ['A_短兵','B_长兵','C_重兵','D_射击','E_双手','F_其他'],
+			'B_装备Ⅰ' : ['A_头盔','B_铠甲','C_鞋','D_马','E_装饰品'],
+			'C_装备Ⅱ' : ['A_小盾','B_盾','C_护腕','D_披风','E_内衣'],
+			'D_物品及书籍' : ['A_使用道具','B_配方单','C_技能书','D_士兵','E_武魂','F_兵符','G_杂项'],
+			'E_扮装类' : ['A_扮装头盔','B_扮装铠甲','C_扮装鞋','D_全身造型','E_扮装披风','F_扮装马']
+	};
+	$('.items').on('change', '.type', function(){
+		
+		var select_type = $(this);
+		var type = select_type.val();
+		
+		if(type == ''){
+			select_type.next().html('<option value=""></option>');
+			select_type.next().hide();
+		}else{
+			
+			select_type.next().html('<option value=""></option>');
+			$.each(types[type], function(index, value){
+				select_type.next().append('<option value="' + value + '">' + value.substring(2) + '</option>');
+			});
+			select_type.next().show();
+		}
+		
+	});
+	
+	/**
 	 * 卖丢单选
 	 */
 	$('.items').on('click', '.bSell>input, .bDrop>input', function(){
@@ -150,33 +184,42 @@ $().ready(function() {
 	});
 	
 	/**
-	 * 排序按钮绑定点击事件
+	 * 排序按钮
+	 */
+	$('.right>.title>div.types>label').on('click', sortItem);
+	
+	/**
+	 * 位移按钮绑定点击事件
 	 */
 	$('.toolbar>div').on('click', function(e){
 		
 		if($(this).hasClass('top')){
 			
 			$('.item.select').each(function(){
-				var first = $(this).siblings(":first");
+				var first = $(this).siblings(':first');
 				first.before($(this));
+				showItem($(this));
 			});
 		}else if($(this).hasClass('up')){
 			
 			$('.item.select').each(function(){
 				var prev = $(this).prev();
 				$(this).after(prev);
+				showItem($(this));
 			});
 		}else if($(this).hasClass('down')){
 			
 			$('.item.select').each(function(){
 				var next = $(this).next();
 				$(this).before(next);
+				showItem($(this));
 			});
 		}else if($(this).hasClass('bottom')){
 			
 			$('.item.select').each(function(){
-				var last = $(this).siblings(":last");
+				var last = $(this).siblings(':last');
 				last.after($(this));
+				showItem($(this));
 			});
 		}
 		
@@ -221,8 +264,8 @@ $().ready(function() {
 			$(this).parent().find('.iLev select').val($('#bLev_gt').val());
 			$(this).parent().find('.iLev input').val($('#iLev').val());
 				
-			$(this).trigger('click');
-			$('.items').scrollTop($(this).parent().index() * 19);
+			$(this).parent().trigger('click');
+			showItem($(this).parent());
 			
 		});
 		
@@ -239,16 +282,16 @@ $().ready(function() {
 					iFangyu : $('#iFangyu').val(),
 					iWujiangji : $('#iWujiangji').val(),
 					iMaSu : $('#iMaSu').val(),
-					bLev_gt : $('#bLev_gt').val(),
+					bLev_gt : $('#bLev_gt').val() == 'true' ? true : false,
 					iLev : $('#iLev').val()
 			};
 			itemguolvList.push(data);
 			
 			var html_item = $('#item').render(itemguolvList);
-			$('#items').append(html_item);
+			$('#items').prepend(html_item);
 			
-			$('.items>.item:last').trigger('click');
-			$('.items').scrollTop($('.items>.item:last').index() * 19);
+			$('.items>.item:first').trigger('click');
+			showItem($('.items>.item:first'));
 		}
 		
 	});
@@ -293,8 +336,8 @@ $().ready(function() {
 			
 		}).each(function(){
 			
-			$(this).trigger('click');
-			$('.items').scrollTop($(this).parent().index() * 19);
+			$(this).parent().trigger('click');
+			showItem($(this).parent());
 			
 		});
 		
@@ -319,5 +362,52 @@ $().ready(function() {
 		$('#bLev_gt').val('false');
 		$('#iLev').val('');
 	});
+	
+	/**
+	 * 滚动窗口中显示item
+	 */
+	function showItem(item){
+		var itemLineHeight = 19;
+		var height = $('.items').height();
+		var positionTop = item.position().top;
+		var top = item.index() * 19;
+		
+		if(positionTop < itemLineHeight || positionTop > height){
+			$('.items').scrollTop(top - (height - itemLineHeight) / 2);
+		}
+	};
+	
+	/**
+	 * item排序
+	 */
+	function sortItem(){
+		var domArray = $('#items>.item');
+		
+		domArray.sort(function(a, b){
+			
+			var type_a = $(a).find('.types>.type').val();
+			var type_b = $(b).find('.types>.type').val();
+			
+			var subType_a = $(a).find('.types>.subType').val();
+			var subType_b = $(b).find('.types>.subType').val();
+			
+			if(type_a > type_b){
+				return 1;
+			}else if(type_a == type_b){
+				if(subType_a > subType_b){
+					return 1;
+				}else if(subType_a == subType_b){
+					return 0;
+				}else{
+					return -1;
+				}
+			}else{
+				return -1;
+			}
+			
+		});
+		
+		$('#items').html(domArray);
+	}
 	
 });
