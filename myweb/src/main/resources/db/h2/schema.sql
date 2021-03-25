@@ -8,16 +8,19 @@ CREATE TABLE `user` (
 
 DROP TABLE IF EXISTS `itemguolv`;
 CREATE TABLE `itemguolv` (
-  `ObjName` varchar(50) DEFAULT NULL,
-  `bSell` tinyint(1) DEFAULT NULL,
-  `bStore` tinyint(1) DEFAULT NULL,
-  `bDrop` tinyint(1) DEFAULT NULL,
-  `iQiangHuaCishu` int DEFAULT NULL,
-  `iMaSu` int DEFAULT NULL,
-  `iFangyu` int DEFAULT NULL,
-  `iGongji` int DEFAULT NULL,
-  `iShenshangliuliang` int DEFAULT NULL,
-  `iWujiangji` int DEFAULT NULL,
-  `iLev` int DEFAULT NULL,
-  `bLev_gt` tinyint(1) DEFAULT NULL
+  `ObjName` varchar(50) NOT NULL DEFAULT '',
+  `bSell` boolean NOT NULL DEFAULT FALSE,
+  `bStore` boolean NOT NULL DEFAULT FALSE,
+  `bDrop` boolean NOT NULL DEFAULT FALSE,
+  `iQiangHuaCishu` int NOT NULL DEFAULT 0,
+  `iMaSu` int NOT NULL DEFAULT 0,
+  `iFangyu` int NOT NULL DEFAULT 0,
+  `iGongji` int NOT NULL DEFAULT 0,
+  `iShenshangliuliang` int NOT NULL DEFAULT 0,
+  `iWujiangji` int NOT NULL DEFAULT 0,
+  `iLev` int NOT NULL DEFAULT 0,
+  `bLev_gt` boolean NOT NULL DEFAULT FALSE,
+  `type` varchar(50) NOT NULL DEFAULT '',
+  `subType` varchar(50) NOT NULL DEFAULT '',
+  `index` int NOT NULL DEFAULT 0
 );
