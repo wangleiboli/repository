@@ -65,6 +65,7 @@ body.body {
 	position: absolute;
 	top: 0px;
 	right: 0px;
+	cursor: pointer;
 }
 
 /* left>show */
@@ -133,6 +134,7 @@ body.body {
 .left>.save>input[type="button"] {
 	display: block;
 	width: 80px;
+	cursor: pointer;
 }
 
 /* left>setup */
@@ -181,6 +183,7 @@ body.body {
 	float: right;
 	margin-right: 10px;
 	text-align: center;
+	cursor: pointer;
 }
 
 .left>.setup>.line>input[type="button"].add {
@@ -267,6 +270,10 @@ body.body {
 	color: rgb(255, 140, 60);
 	font-size: 12px;
 	cursor: pointer;
+}
+
+.right>.title>div.types>label:hover {
+	color: red;
 }
 
 .right>.items>.item:hover, .right>.items>.item:hover * {
