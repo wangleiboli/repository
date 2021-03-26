@@ -974,63 +974,63 @@ public class ItemguolvExample {
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexIsNull() {
-			addCriterion("index is null");
+		public Criteria andSeqIsNull() {
+			addCriterion("seq is null");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexIsNotNull() {
-			addCriterion("index is not null");
+		public Criteria andSeqIsNotNull() {
+			addCriterion("seq is not null");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexEqualTo(Integer value) {
-			addCriterion("index =", value, "index");
+		public Criteria andSeqEqualTo(Integer value) {
+			addCriterion("seq =", value, "seq");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexNotEqualTo(Integer value) {
-			addCriterion("index <>", value, "index");
+		public Criteria andSeqNotEqualTo(Integer value) {
+			addCriterion("seq <>", value, "seq");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexGreaterThan(Integer value) {
-			addCriterion("index >", value, "index");
+		public Criteria andSeqGreaterThan(Integer value) {
+			addCriterion("seq >", value, "seq");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexGreaterThanOrEqualTo(Integer value) {
-			addCriterion("index >=", value, "index");
+		public Criteria andSeqGreaterThanOrEqualTo(Integer value) {
+			addCriterion("seq >=", value, "seq");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexLessThan(Integer value) {
-			addCriterion("index <", value, "index");
+		public Criteria andSeqLessThan(Integer value) {
+			addCriterion("seq <", value, "seq");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexLessThanOrEqualTo(Integer value) {
-			addCriterion("index <=", value, "index");
+		public Criteria andSeqLessThanOrEqualTo(Integer value) {
+			addCriterion("seq <=", value, "seq");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexIn(List<Integer> values) {
-			addCriterion("index in", values, "index");
+		public Criteria andSeqIn(List<Integer> values) {
+			addCriterion("seq in", values, "seq");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexNotIn(List<Integer> values) {
-			addCriterion("index not in", values, "index");
+		public Criteria andSeqNotIn(List<Integer> values) {
+			addCriterion("seq not in", values, "seq");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexBetween(Integer value1, Integer value2) {
-			addCriterion("index between", value1, value2, "index");
+		public Criteria andSeqBetween(Integer value1, Integer value2) {
+			addCriterion("seq between", value1, value2, "seq");
 			return (Criteria) this;
 		}
 
-		public Criteria andIndexNotBetween(Integer value1, Integer value2) {
-			addCriterion("index not between", value1, value2, "index");
+		public Criteria andSeqNotBetween(Integer value1, Integer value2) {
+			addCriterion("seq not between", value1, value2, "seq");
 			return (Criteria) this;
 		}
 	}

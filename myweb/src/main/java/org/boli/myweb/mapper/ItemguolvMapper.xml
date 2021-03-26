@@ -16,7 +16,7 @@
     <result column="bLev_gt" jdbcType="BIT" property="blevGt" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="subType" jdbcType="VARCHAR" property="subtype" />
-    <result column="index" jdbcType="INTEGER" property="index" />
+    <result column="seq" jdbcType="INTEGER" property="seq" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     ObjName, bSell, bStore, bDrop, iQiangHuaCishu, iMaSu, iFangyu, iGongji, iShenshangliuliang, 
-    iWujiangji, iLev, bLev_gt, type, subType, index
+    iWujiangji, iLev, bLev_gt, type, subType, seq
   </sql>
   <select id="selectByExample" parameterType="org.boli.myweb.entity.ItemguolvExample" resultMap="BaseResultMap">
     select
@@ -105,13 +105,13 @@
       bDrop, iQiangHuaCishu, iMaSu, 
       iFangyu, iGongji, iShenshangliuliang, 
       iWujiangji, iLev, bLev_gt, 
-      type, subType, index
+      type, subType, seq
       )
     values (#{objname,jdbcType=VARCHAR}, #{bsell,jdbcType=BIT}, #{bstore,jdbcType=BIT}, 
       #{bdrop,jdbcType=BIT}, #{iqianghuacishu,jdbcType=INTEGER}, #{imasu,jdbcType=INTEGER}, 
       #{ifangyu,jdbcType=INTEGER}, #{igongji,jdbcType=INTEGER}, #{ishenshangliuliang,jdbcType=INTEGER}, 
       #{iwujiangji,jdbcType=INTEGER}, #{ilev,jdbcType=INTEGER}, #{blevGt,jdbcType=BIT}, 
-      #{type,jdbcType=VARCHAR}, #{subtype,jdbcType=VARCHAR}, #{index,jdbcType=INTEGER}
+      #{type,jdbcType=VARCHAR}, #{subtype,jdbcType=VARCHAR}, #{seq,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.boli.myweb.entity.Itemguolv">
@@ -159,8 +159,8 @@
       <if test="subtype != null">
         subType,
       </if>
-      <if test="index != null">
-        index,
+      <if test="seq != null">
+        seq,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -206,8 +206,8 @@
       <if test="subtype != null">
         #{subtype,jdbcType=VARCHAR},
       </if>
-      <if test="index != null">
-        #{index,jdbcType=INTEGER},
+      <if test="seq != null">
+        #{seq,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -262,8 +262,8 @@
       <if test="record.subtype != null">
         subType = #{record.subtype,jdbcType=VARCHAR},
       </if>
-      <if test="record.index != null">
-        index = #{record.index,jdbcType=INTEGER},
+      <if test="record.seq != null">
+        seq = #{record.seq,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -286,7 +286,7 @@
       bLev_gt = #{record.blevGt,jdbcType=BIT},
       type = #{record.type,jdbcType=VARCHAR},
       subType = #{record.subtype,jdbcType=VARCHAR},
-      index = #{record.index,jdbcType=INTEGER}
+      seq = #{record.seq,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

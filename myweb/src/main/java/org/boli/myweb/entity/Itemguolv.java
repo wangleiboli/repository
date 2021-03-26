@@ -32,15 +32,15 @@ public class Itemguolv {
 	private String type;
 	@JsonProperty("subType")
 	private String subtype;
-	@JsonProperty("index")
-	private Integer index;
+	@JsonProperty("seq")
+	private Integer seq;
 
 	public Itemguolv() {
 	}
 
 	public Itemguolv(String objname, Boolean bsell, Boolean bstore, Boolean bdrop, Integer iqianghuacishu,
 			Integer imasu, Integer ifangyu, Integer igongji, Integer ishenshangliuliang, Integer iwujiangji,
-			Integer ilev, Boolean blevGt, String type, String subtype, Integer index) {
+			Integer ilev, Boolean blevGt, String type, String subtype, Integer seq) {
 		super();
 		this.objname = objname;
 		this.bsell = bsell;
@@ -56,7 +56,7 @@ public class Itemguolv {
 		this.blevGt = blevGt;
 		this.type = type;
 		this.subtype = subtype;
-		this.index = index;
+		this.seq = seq;
 	}
 
 	@JsonIgnore
@@ -200,12 +200,12 @@ public class Itemguolv {
 	}
 
 	@JsonIgnore
-	public Integer getIndex() {
-		return index;
+	public Integer getSeq() {
+		return seq;
 	}
 
 	@JsonIgnore
-	public void setIndex(Integer index) {
-		this.index = index;
+	public void setSeq(Integer seq) {
+		this.seq = seq;
 	}
 }

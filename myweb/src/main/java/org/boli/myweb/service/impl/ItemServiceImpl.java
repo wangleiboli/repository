@@ -70,18 +70,25 @@ public class ItemServiceImpl implements ItemService {
 			@Override
 			public int compare(Itemguolv o1, Itemguolv o2) {
 
+				o1.setType(o1.getType() == null ? "" : o1.getType());
+				o2.setType(o2.getType() == null ? "" : o2.getType());
+				o1.setSubtype(o1.getSubtype() == null ? "" : o1.getSubtype());
+				o2.setSubtype(o2.getSubtype() == null ? "" : o2.getSubtype());
+				o1.setSeq(o1.getSeq() == null ? 0 : o1.getSeq());
+				o2.setSeq(o2.getSeq() == null ? 0 : o2.getSeq());
+
 				if (o1.getType().compareTo(o2.getType()) > 0) {
 					return 1;
 				} else if (o1.getType().compareTo(o2.getType()) == 0) {
 					if (o1.getSubtype().compareTo(o2.getSubtype()) > 0) {
 						return 1;
 					} else if (o1.getSubtype().compareTo(o2.getSubtype()) == 0) {
-						if (o1.getIndex() == null) {
+						if (o1.getSeq() == null) {
 							return -1;
-						} else if (o2.getIndex() == null) {
+						} else if (o2.getSeq() == null) {
 							return 1;
 						} else {
-							return o1.getIndex().compareTo(o2.getIndex());
+							return o1.getSeq().compareTo(o2.getSeq());
 						}
 					} else {
 						return -1;

@@ -47,7 +47,7 @@
 	<!-- 【2】 配置H2数据源，使用C3P0 -->
 	<!-- 嵌入模式(文件)：可以同应用程序打包在一起发布， -->
 	<!-- 直接用"jdbc:h2:~/myweb"连接，若~/myweb.mv.db存在则锁定后打开，若不存在则新建(进程独占) -->
-	<bean id="dataSource"
+	<bean id="dataSource2"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="${h2.jdbc.driverClass}" />
@@ -74,7 +74,7 @@
 	</bean>
 
 	<!-- 【2】 配置mysql数据源，使用C3P0 -->
-	<bean id="dataSource3"
+	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="${jdbc.driverClass}" />
@@ -139,6 +139,8 @@
 			<!-- rollback-for:遇到哪些异常就回滚，其他的都不回滚 -->
 			<!-- no-rollback-for：遇到哪些异常不回滚，其他的都回滚。和上面互斥的 -->
 			<!-- 支持通配符 要求service中 方法名字必须符合下面的规则 -->
+			<tx:method name="save*" propagation="REQUIRED"
+				read-only="false" />
 			<tx:method name="insert*" propagation="REQUIRED"
 				read-only="false" />
 			<tx:method name="update*" propagation="REQUIRED"
@@ -162,7 +164,7 @@
 		<!-- name-pattern:指定方法名,*代表所有,例如set*,代表以set开头的所有方法. -->
 		<!-- param-pattern:指定方法参数(声明的类型),(..)代表所有参数,(*)代表一个参数,(*,String)代表第一个参数为任何值,第二个为String类型. -->
 		<aop:pointcut id="txPointcut"
-			expression="execution(* org.boli.myweb.service.*.*(..))" />
+			expression="execution(* org.boli.myweb.service.impl.*.*(..))" />
 		<!-- 切面 -->
 		<aop:advisor advice-ref="txAdvice"
 			pointcut-ref="txPointcut" />

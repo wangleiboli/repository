@@ -142,13 +142,35 @@
 				<div class="types">
 					<select class="type">
 						<option value=""></option>
-						<option value="A_武器" {{if type == "A_武器"}}selected="selected"{{/if}}>武器</option>
-						<option value="B_装备Ⅰ" {{if type == "B_装备Ⅰ"}}selected="selected"{{/if}}>装备Ⅰ</option>
-						<option value="C_装备Ⅱ" {{if type == "C_装备Ⅱ"}}selected="selected"{{/if}}>装备Ⅱ</option>
-						<option value="D_物品及书籍" {{if type == "D_物品及书籍"}}selected="selected"{{/if}}>物品及书籍</option>
-						<option value="E_扮装类" {{if type == "E_扮装类"}}selected="selected"{{/if}}>扮装类</option>
+						<option value="A_神兵" {{if type == "A_神兵"}}selected="selected"{{/if}}>神兵</option>
+						<option value="B_神装" {{if type == "B_神装"}}selected="selected"{{/if}}>神装</option>
+						<option value="C_武器" {{if type == "C_武器"}}selected="selected"{{/if}}>武器</option>
+						<option value="D_装备Ⅰ" {{if type == "D_装备Ⅰ"}}selected="selected"{{/if}}>装备Ⅰ</option>
+						<option value="E_装备Ⅱ" {{if type == "E_装备Ⅱ"}}selected="selected"{{/if}}>装备Ⅱ</option>
+						<option value="F_物品及书籍" {{if type == "F_物品及书籍"}}selected="selected"{{/if}}>物品及书籍</option>
+						<option value="G_扮装类" {{if type == "G_扮装类"}}selected="selected"{{/if}}>扮装类</option>
 					</select>
-					{{if type == "A_武器"}}
+					{{if type == "A_神兵"}}
+					<select class="subType">
+						<option value=""></option>
+						<option value="A_90级" {{if subType == "A_90级"}}selected="selected"{{/if}}>90级</option>
+						<option value="B_100级" {{if subType == "B_100级"}}selected="selected"{{/if}}>100级</option>
+						<option value="C_110级" {{if subType == "C_110级"}}selected="selected"{{/if}}>110级</option>
+						<option value="D_120级" {{if subType == "D_120级"}}selected="selected"{{/if}}>120级</option>
+						<option value="E_130级" {{if subType == "E_130级"}}selected="selected"{{/if}}>130级</option>
+						<option value="F_140级" {{if subType == "F_140级"}}selected="selected"{{/if}}>140级</option>
+					</select>
+					{{else type == "B_神装"}}
+					<select class="subType">
+						<option value=""></option>
+						<option value="A_90级" {{if subType == "A_90级"}}selected="selected"{{/if}}>90级</option>
+						<option value="B_100级" {{if subType == "B_100级"}}selected="selected"{{/if}}>100级</option>
+						<option value="C_110级" {{if subType == "C_110级"}}selected="selected"{{/if}}>110级</option>
+						<option value="D_120级" {{if subType == "D_120级"}}selected="selected"{{/if}}>120级</option>
+						<option value="E_130级" {{if subType == "E_130级"}}selected="selected"{{/if}}>130级</option>
+						<option value="F_140级" {{if subType == "F_140级"}}selected="selected"{{/if}}>140级</option>
+					</select>
+					{{else type == "C_武器"}}
 					<select class="subType">
 						<option value=""></option>
 						<option value="A_短兵" {{if subType == "A_短兵"}}selected="selected"{{/if}}>短兵</option>
@@ -158,7 +180,7 @@
 						<option value="E_双手" {{if subType == "E_双手"}}selected="selected"{{/if}}>双手</option>
 						<option value="F_其他" {{if subType == "F_其他"}}selected="selected"{{/if}}>其他</option>
 					</select>
-					{{else type == "B_装备Ⅰ"}}
+					{{else type == "D_装备Ⅰ"}}
 					<select class="subType">
 						<option value=""></option>
 						<option value="A_头盔" {{if subType == "A_头盔"}}selected="selected"{{/if}}>头盔</option>
@@ -167,7 +189,7 @@
 						<option value="D_马" {{if subType == "D_马"}}selected="selected"{{/if}}>马</option>
 						<option value="E_装饰品" {{if subType == "E_装饰品"}}selected="selected"{{/if}}>装饰品</option>
 					</select>
-					{{else type == "C_装备Ⅱ"}}
+					{{else type == "E_装备Ⅱ"}}
 					<select class="subType">
 						<option value=""></option>
 						<option value="A_小盾" {{if subType == "A_小盾"}}selected="selected"{{/if}}>小盾</option>
@@ -176,7 +198,7 @@
 						<option value="D_披风" {{if subType == "D_披风"}}selected="selected"{{/if}}>披风</option>
 						<option value="E_内衣" {{if subType == "E_内衣"}}selected="selected"{{/if}}>内衣</option>
 					</select>
-					{{else type == "D_物品及书籍"}}
+					{{else type == "F_物品及书籍"}}
 					<select class="subType">
 						<option value=""></option>
 						<option value="A_使用道具" {{if subType == "A_使用道具"}}selected="selected"{{/if}}>使用道具</option>
@@ -187,7 +209,7 @@
 						<option value="F_兵符" {{if subType == "F_兵符"}}selected="selected"{{/if}}>兵符</option>
 						<option value="G_杂项" {{if subType == "G_杂项"}}selected="selected"{{/if}}>杂项</option>
 					</select>
-					{{else type == "E_扮装类"}}
+					{{else type == "G_扮装类"}}
 					<select class="subType">
 						<option value=""></option>
 						<option value="A_扮装头盔" {{if subType == "A_扮装头盔"}}selected="selected"{{/if}}>扮装头盔</option>

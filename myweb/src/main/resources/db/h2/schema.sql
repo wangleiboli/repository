@@ -22,5 +22,5 @@ CREATE TABLE `itemguolv` (
   `bLev_gt` boolean NOT NULL DEFAULT FALSE,
   `type` varchar(50) NOT NULL DEFAULT '',
   `subType` varchar(50) NOT NULL DEFAULT '',
-  `index` int NOT NULL DEFAULT 0
+  `seq` int NOT NULL DEFAULT 0
 );
