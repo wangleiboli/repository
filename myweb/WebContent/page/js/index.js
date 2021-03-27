@@ -31,14 +31,21 @@ $().ready(function() {
 		var pathname = $('#pathname').val();
 		// 配置目录写缓存
 		localStorage.setItem('pathname', pathname);
-		var data = { pathname: pathname };
-
+		
+		var data = new FormData();
+		
+		data.append('pathname', pathname);
+		$.each($('#itemFile')[0].files, function(){
+			data.append('files', this);
+		});
+		
 		$.ajax({
 			url: 'item/readConfig.do',
 			type: 'POST',
 			dataType: 'json',
 			data: data,
-			contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+			processData: false,// 上传文件
+			contentType: false,// 上传文件
 			success: function(result) {
 				//console.log(result);
 				var html_role = $('#role').render(result.data.configFileList);
