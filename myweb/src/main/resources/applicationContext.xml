@@ -174,4 +174,16 @@
 	<task:executor id="taskExecutor" pool-size="5" />
 	<task:annotation-driven executor="taskExecutor" />
 
+	<!-- 这是SpringMVC提供的文件解析组件,对上传文件的请求解析等工作进行了封装 -->
+	<!-- 在测试传统方式上传时,要将该bean注释掉,否则会出现歧义 -->
+	<!-- 配置文件解析器对象，要求id名称必须是multipartResolver -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8" />
+		<!-- 设置上传文件的最大尺寸为 1M -->
+		<property name="maxUploadSize" value="10485760" />
+		<!-- eclipse发布静态文件到tomcat中，会删除这个目录，导致文件无法上传 -->
+		<!-- <property name="uploadTempDir" value="uploadTemp" /> -->
+	</bean>
+
 </beans>
