@@ -171,6 +171,13 @@ $().ready(function() {
 	});
 
 	/**
+	 * 删除物品
+	 */
+	$('.items').on('click', '.delete', function(){
+		$(this).parent().remove();
+	});
+
+	/**
 	 * 卖丢单选
 	 */
 	$('.items').on('click', '.bSell>input, .bDrop>input', function() {

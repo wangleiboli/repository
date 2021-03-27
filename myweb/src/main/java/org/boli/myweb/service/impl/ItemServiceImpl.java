@@ -92,10 +92,8 @@ public class ItemServiceImpl implements ItemService {
 					if (o1.getSubtype().compareTo(o2.getSubtype()) > 0) {
 						return 1;
 					} else if (o1.getSubtype().compareTo(o2.getSubtype()) == 0) {
-						if (o1.getSeq() == null) {
-							return -1;
-						} else if (o2.getSeq() == null) {
-							return 1;
+						if (o1.getSeq().compareTo(o2.getSeq()) == 0) {
+							return o1.getObjname().compareTo(o2.getObjname());
 						} else {
 							return o1.getSeq().compareTo(o2.getSeq());
 						}
@@ -133,7 +131,7 @@ public class ItemServiceImpl implements ItemService {
 			String line;
 			while ((line = bufferedReader.readLine()) != null) {
 
-				items = line.split(",|，|、|\\s+");
+				items = line.split("。|\\.|,|\\，|、|\\-|\\s+");
 
 				for (String item : items) {
 					itemguolvMap.put(item.trim(), new Itemguolv(item.trim()));

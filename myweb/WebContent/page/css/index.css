@@ -262,6 +262,13 @@ body.body {
 	text-overflow: ellipsis;
 }
 
+.right>.title>div.delete, .right>.items>.item>div.delete {
+	width: 18px;
+	border-right: 0px;
+	color: rgb(255, 140, 60);
+	cursor: pointer;
+}
+
 .right>.title>div.ObjName, .right>.items>.item>div.ObjName {
 	width: 161px;
 }
