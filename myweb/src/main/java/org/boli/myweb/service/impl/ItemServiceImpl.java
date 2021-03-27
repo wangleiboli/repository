@@ -1,5 +1,6 @@
 package org.boli.myweb.service.impl;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -27,6 +28,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -39,13 +41,19 @@ public class ItemServiceImpl implements ItemService {
 	ItemguolvMapper itemguolvMapper;
 
 	@Override
-	public Config readConfig(String pathname) {
+	public Config readConfig(String pathname, MultipartFile[] files) {
 
 		Config config = new Config();
 
-		List<File> configFileList = getConfigFile(pathname);
-
 		Map<String, Itemguolv> itemguolvMap = new HashMap<String, Itemguolv>();
+
+		// 读物品文件
+		for (MultipartFile multipartFile : files) {
+			itemguolvMap.putAll(readItemguolv(multipartFile));
+		}
+
+		// 读配置文件
+		List<File> configFileList = getConfigFile(pathname);
 
 		for (File file : configFileList) {
 
@@ -61,6 +69,7 @@ public class ItemServiceImpl implements ItemService {
 
 		}
 
+		// 读数据库
 		itemguolvMap.putAll(readItemguolv());
 
 		List<Itemguolv> itemguolvList = new ArrayList<Itemguolv>(itemguolvMap.values());
@@ -102,6 +111,42 @@ public class ItemServiceImpl implements ItemService {
 		config.setItemguolvList(itemguolvList);
 
 		return config;
+	}
+
+	/**
+	 * 从物品文件读取物品信息
+	 * 
+	 * @param multipartFile
+	 * @return
+	 */
+	public Map<String, Itemguolv> readItemguolv(MultipartFile multipartFile) {
+
+		Map<String, Itemguolv> itemguolvMap = new HashMap<String, Itemguolv>();
+
+		try (InputStream inputStream = multipartFile.getInputStream();
+
+				Reader reader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
+
+				BufferedReader bufferedReader = new BufferedReader(reader);) {
+
+			String[] items;
+			String line;
+			while ((line = bufferedReader.readLine()) != null) {
+
+				items = line.split(",|，|、|\\s+");
+
+				for (String item : items) {
+					itemguolvMap.put(item.trim(), new Itemguolv(item.trim()));
+				}
+
+			}
+
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+
+		itemguolvMap.remove("");
+		return itemguolvMap;
 	}
 
 	/**
