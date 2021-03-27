@@ -37,35 +37,30 @@ body.body {
 	float: left;
 }
 
-/* left>read */
-.left>.read {
+/* left>config */
+.left>.config {
 	height: 25px;
+	margin-top: 20px;
 	position: relative;
 }
 
-.left>.read>label {
+.left>.config>label {
 	display: block;
 	width: 120px;
 	position: absolute;
 }
 
-.left>.read>div {
+.left>.config>div {
 	display: block;
 	margin-left: 120px;
-	margin-right: 90px;
 }
 
-.left>.read>div>input[type="text"] {
+.left>.config>div>input[type="text"] {
 	width: 100%;
 }
 
-.left>.read>input[type="button"] {
-	display: block;
-	width: 80px;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	cursor: pointer;
+.left>.config:first-child {
+	margin-top: 0px;
 }
 
 /* left>show */
@@ -125,16 +120,25 @@ body.body {
 	font-size: 12px;
 }
 
-/* left>save */
-.left>.save {
+/* left>operate */
+.left>.operate {
 	height: 25px;
 	margin-top: 20px;
 }
 
-.left>.save>input[type="button"] {
+.left>.operate>input[type="button"] {
 	display: block;
-	width: 80px;
+	width: 30%;
+	margin-left: 10%;
+	margin-right: 10%;
 	cursor: pointer;
+	float: left;
+	cursor: pointer;
+	color: rgb(255, 140, 60);
+}
+
+.left>.operate>input[type="button"].save {
+	float: right;
 }
 
 /* left>setup */
@@ -184,16 +188,20 @@ body.body {
 	margin-right: 10px;
 	text-align: center;
 	cursor: pointer;
+	color: green;
+}
+
+.left>.setup>.line>input[type="button"].delete {
+	color: red;
 }
 
 .left>.setup>.line>input[type="button"].add {
 	width: 100px;
-	color: red;
+	color: rgb(255, 140, 60);
 }
 
 .left>.setup>.line>input[type="button"].reset {
 	width: 100px;
-	color: green;
 }
 
 /* center>toolbar */
