@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 @RequestMapping("/item")
@@ -17,9 +18,9 @@ public class ItemController {
 
 	@RequestMapping("/readConfig")
 	@ResponseBody
-	public Result readConfig(String pathname) {
+	public Result readConfig(String pathname, MultipartFile[] files) {
 
-		Config config = itemService.readConfig(pathname);
+		Config config = itemService.readConfig(pathname, files);
 
 		Result result = new Result(config);
 		return result;
