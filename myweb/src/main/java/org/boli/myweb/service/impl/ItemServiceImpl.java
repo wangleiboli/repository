@@ -134,6 +134,9 @@ public class ItemServiceImpl implements ItemService {
 				items = line.split("。|\\.|,|\\，|、|\\-|\\s+");
 
 				for (String item : items) {
+					if(item.contains("<") || item.contains(">") || item.contains("《") || item.contains("》")) {
+						continue;
+					}
 					itemguolvMap.put(item.trim(), new Itemguolv(item.trim()));
 				}
 

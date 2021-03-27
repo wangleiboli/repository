@@ -5,6 +5,8 @@ import org.boli.myweb.model.Result;
 import org.boli.myweb.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,6 +38,12 @@ public class ItemController {
 		Result result = new Result();
 		return result;
 
+	}
+
+	@InitBinder
+	public void initListBinder(WebDataBinder binder) {
+		// 设置需要包裹的元素个数，默认为256
+		binder.setAutoGrowCollectionLimit(10000);
 	}
 
 }

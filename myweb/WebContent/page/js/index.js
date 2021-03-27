@@ -173,6 +173,9 @@ $().ready(function() {
 	/**
 	 * 删除物品
 	 */
+	$('.right>.title').on('click', '.delete', function(){
+		$('.items').empty();
+	});
 	$('.items').on('click', '.delete', function(){
 		$(this).parent().remove();
 	});
