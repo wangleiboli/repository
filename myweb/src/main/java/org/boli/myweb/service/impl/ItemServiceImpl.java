@@ -92,11 +92,11 @@ public class ItemServiceImpl implements ItemService {
 					if (o1.getSubtype().compareTo(o2.getSubtype()) > 0) {
 						return 1;
 					} else if (o1.getSubtype().compareTo(o2.getSubtype()) == 0) {
-						if (o1.getSeq().compareTo(o2.getSeq()) == 0) {
+//						if (o1.getSeq().compareTo(o2.getSeq()) == 0) {
 							return o1.getObjname().compareTo(o2.getObjname());
-						} else {
-							return o1.getSeq().compareTo(o2.getSeq());
-						}
+//						} else {
+//							return o1.getSeq().compareTo(o2.getSeq());
+//						}
 					} else {
 						return -1;
 					}
