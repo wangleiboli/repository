@@ -38,6 +38,12 @@ public class Itemguolv {
 	public Itemguolv() {
 	}
 
+	public Itemguolv(String objname) {
+		super();
+		this.objname = objname;
+		this.bsell = true;
+	}
+
 	public Itemguolv(String objname, Boolean bsell, Boolean bstore, Boolean bdrop, Integer iqianghuacishu,
 			Integer imasu, Integer ifangyu, Integer igongji, Integer ishenshangliuliang, Integer iwujiangji,
 			Integer ilev, Boolean blevGt, String type, String subtype, Integer seq) {
