@@ -75,10 +75,6 @@ $().ready(function() {
 
 		$('.item').each(function(index) {
 			
-			if(!$(this).find('.bSell>input[type="checkbox"]').is(':checked') && !$(this).find('.bStore>input[type="checkbox"]').is(':checked') && !$(this).find('.bStore>input[type="checkbox"]').is(':checked')){
-				$(this).find('.bSell>input[type="checkbox"]').prop('checked', true);
-			}
-			
 			data['itemguolvList[' + index + '].objname'] = $(this).find('.ObjName').text();
 			data['itemguolvList[' + index + '].bsell'] = $(this).find('.bSell>input[type="checkbox"]').is(':checked');
 			data['itemguolvList[' + index + '].bstore'] = $(this).find('.bStore>input[type="checkbox"]').is(':checked');

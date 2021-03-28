@@ -86,22 +86,21 @@ public class ItemServiceImpl implements ItemService {
 				o1.setSeq(o1.getSeq() == null ? 0 : o1.getSeq());
 				o2.setSeq(o2.getSeq() == null ? 0 : o2.getSeq());
 
-				if (o1.getType().compareTo(o2.getType()) > 0) {
-					return 1;
-				} else if (o1.getType().compareTo(o2.getType()) == 0) {
-					if (o1.getSubtype().compareTo(o2.getSubtype()) > 0) {
-						return 1;
-					} else if (o1.getSubtype().compareTo(o2.getSubtype()) == 0) {
-//						if (o1.getSeq().compareTo(o2.getSeq()) == 0) {
-							return o1.getObjname().compareTo(o2.getObjname());
-//						} else {
-//							return o1.getSeq().compareTo(o2.getSeq());
-//						}
+				String o1_prename = o1.getObjname().length() >= 2 ? o1.getObjname().substring(0, 2) : o1.getObjname();
+				String o2_prename = o2.getObjname().length() >= 2 ? o2.getObjname().substring(0, 2) : o2.getObjname();
+
+				if (o1.getType().compareTo(o2.getType()) == 0) {
+					if (o1.getSubtype().compareTo(o2.getSubtype()) == 0) {
+						if (o1_prename.compareTo(o2_prename) == 0) {
+							return o1.getSeq().compareTo(o2.getSeq());
+						} else {
+							return o1_prename.compareTo(o2_prename);
+						}
 					} else {
-						return -1;
+						return o1.getSubtype().compareTo(o2.getSubtype());
 					}
 				} else {
-					return -1;
+					return o1.getType().compareTo(o2.getType());
 				}
 			}
 		});
@@ -134,10 +133,10 @@ public class ItemServiceImpl implements ItemService {
 				items = line.split("。|\\.|,|\\，|、|\\-|\\s+");
 
 				for (String item : items) {
-					if(item.contains("<") || item.contains(">") || item.contains("《") || item.contains("》")) {
+					if (item.contains("<") || item.contains(">") || item.contains("《") || item.contains("》")) {
 						continue;
 					}
-					itemguolvMap.put(item.trim(), new Itemguolv(item.trim()));
+					itemguolvMap.put(item.trim(), new Itemguolv(item.trim(), true));
 				}
 
 			}
@@ -286,7 +285,9 @@ public class ItemServiceImpl implements ItemService {
 
 		List<Itemguolv4Config> itemguolv4ConfigList = new ArrayList<Itemguolv4Config>();
 		for (Itemguolv itemguolv : itemguolvList) {
-			itemguolv4ConfigList.add(new Itemguolv4Config(itemguolv));
+			if (itemguolv.getBsell() || itemguolv.getBsell() || itemguolv.getBdrop()) {
+				itemguolv4ConfigList.add(new Itemguolv4Config(itemguolv));
+			}
 		}
 
 		for (ConfigFile configFile : config.getConfigFileList()) {

@@ -1,5 +1,7 @@
 package org.boli.myweb.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.boli.myweb.model.Config;
 import org.boli.myweb.model.Result;
 import org.boli.myweb.service.ItemService;
@@ -31,7 +33,7 @@ public class ItemController {
 
 	@RequestMapping("/saveConfig")
 	@ResponseBody
-	public Result saveConfig(Config config) {
+	public Result saveConfig(Config config, HttpServletRequest req) {
 
 		itemService.saveConfig(config);
 
@@ -40,10 +42,16 @@ public class ItemController {
 
 	}
 
+	/**
+	 * 设置需要包裹的元素个数，默认为256<br>
+	 * Tomcat中设置post方式请求的参数大小和个数 maxPostSize="-1" maxParameterCount="-1"
+	 * 
+	 * @param binder
+	 */
 	@InitBinder
 	public void initListBinder(WebDataBinder binder) {
 		// 设置需要包裹的元素个数，默认为256
-		binder.setAutoGrowCollectionLimit(10000);
+		binder.setAutoGrowCollectionLimit(100000);
 	}
 
 }

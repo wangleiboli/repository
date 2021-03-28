@@ -38,10 +38,10 @@ public class Itemguolv {
 	public Itemguolv() {
 	}
 
-	public Itemguolv(String objname) {
+	public Itemguolv(String objname, boolean bsell) {
 		super();
 		this.objname = objname;
-		this.bsell = true;
+		this.bsell = bsell;
 	}
 
 	public Itemguolv(String objname, Boolean bsell, Boolean bstore, Boolean bdrop, Integer iqianghuacishu,
