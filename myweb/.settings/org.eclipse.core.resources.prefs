@@ -1,4 +1,0 @@
-eclipse.preferences.version=1
-encoding//src/main/resources/db/h2/jdbc.properties=UTF-8
-encoding//src/main/resources/db/mysql/jdbc.properties=UTF-8
-encoding//src/test/resources/config.xml=GBK
