@@ -92,18 +92,19 @@ public class ItemServiceImpl implements ItemService {
 				int result = 0;
 				if ((result = o1.getType().compareTo(o2.getType())) == 0) {
 					if ((result = o1.getSubtype().compareTo(o2.getSubtype())) == 0) {
-						if (o1.getType().equals("A_神兵") || o1.getType().equals("B_神装")
-								|| o1.getType().equals("E_装备Ⅱ")) {
+						if (o1.getType().equals("A_神兵") || o1.getType().equals("B_神装") || o1.getType().equals("E_装备Ⅱ")
+								|| o1.getType().equals("F_物品及书籍")) {
 							return o1.getSeq().compareTo(o2.getSeq());
 						}
-						if (o1.getSubtype().equals("F_兵符")) {
+						if (o1.getSubtype().equals("D_马") || o1.getSubtype().equals("E_装饰品")
+								|| o1.getSubtype().equals("F_套装")) {
 							return o1.getSeq().compareTo(o2.getSeq());
 						}
 
-						if (o1_prename.compareTo(o2_prename) == 0) {
+						if ((result = o1_prename.compareTo(o2_prename)) == 0) {
 							return o1.getSeq().compareTo(o2.getSeq());
 						} else {
-							return o1.getObjname().compareTo(o2.getObjname());
+							return result;
 						}
 					} else {
 						return result;

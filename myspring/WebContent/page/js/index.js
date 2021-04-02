@@ -142,7 +142,7 @@ $().ready(function() {
 		'A_神兵': ['A_90级', 'B_100级', 'C_110级', 'D_120级', 'E_130级', 'F_140级'],
 		'B_神装': ['A_90级', 'B_100级', 'C_110级', 'D_120级', 'E_130级', 'F_140级'],
 		'C_武器': ['A_短兵', 'B_长兵', 'C_重兵', 'D_射击', 'E_双手', 'F_其他'],
-		'D_装备Ⅰ': ['A_头盔', 'B_铠甲', 'C_鞋', 'D_马', 'E_装饰品'],
+		'D_装备Ⅰ': ['A_头盔', 'B_铠甲', 'C_鞋', 'D_马', 'E_装饰品', 'F_套装'],
 		'E_装备Ⅱ': ['A_小盾', 'B_盾', 'C_护腕', 'D_披风', 'E_内衣'],
 		'F_物品及书籍': ['A_使用道具', 'B_配方单', 'C_技能书', 'D_士兵', 'E_武魂', 'F_兵符', 'G_杂项'],
 		'G_扮装类': ['A_扮装头盔', 'B_扮装铠甲', 'C_扮装鞋', 'D_全身造型', 'E_扮装披风', 'F_扮装马']
@@ -416,22 +416,18 @@ $().ready(function() {
 
 			if (type_a == type_b) {
 				if (subType_a == subType_b) {
-					if (type_a == 'A_神兵' || type_a == 'B_神装' || type_a == 'E_装备Ⅱ') {
+					if (type_a == 'A_神兵' || type_a == 'B_神装' || type_a == 'E_装备Ⅱ' || type_a == 'F_物品及书籍') {
 						return 0;
 					}
-					if (subType_a == 'F_兵符') {
+					if (subType_a == 'D_马' || subType_a == 'E_装饰品' || subType_a == 'F_套装') {
 						return 0;
 					}
 					if (prename_a == prename_b) {
 						return 0;
+					} else if (prename_a > prename_b) {
+						return 1;
 					} else {
-						if (ObjName_a == prename_b) {
-							return 0;
-						} else if (ObjName_a > prename_b) {
-							return 1;
-						} else {
-							return -1;
-						}
+						return -1;
 					}
 				} else if (subType_a > subType_b) {
 					return 1;
